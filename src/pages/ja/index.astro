@@ -5,9 +5,89 @@ const description = "Indexivへようこそ。";
 const url = "https://indexiv.org/ja/";
 const type = "website";
 const lang = "ja";
+
+import { getCollection } from 'astro:content';
+
+const kana = [
+  'あ','い','う','え','お',
+  'か','き','く','け','こ',
+  'さ','し','す','せ','そ',
+  'た','ち','つ','て','と',
+  'な','に','ぬ','ね','の',
+  'は','ひ','ふ','へ','ほ',
+  'ま','み','む','め','も',
+  'や','ゆ','よ',
+  'ら','り','る','れ','ろ',
+  'わ'
+];
+
+const entries = await getCollection('ja');
+
+// locale指定が重要
+entries.sort((a, b) =>
+  a.data.indexKey.localeCompare(b.data.indexKey)
+);
+
+// グループ化
+const grouped = {};
+
+for (const entry of entries) {
+  const key = entry.data.indexKey;
+  if (!grouped[key]) grouped[key] = [];
+  grouped[key].push(entry);
+}
+
+const tagSet = new Set<string>();
+
+for (const entry of entries) {
+  if (Array.isArray(entry.data.tags)) {
+    for (const tag of entry.data.tags) {
+      tagSet.add(tag);
+    }
+  }
+}
+
+const tags = Array.from(tagSet).sort((a, b) =>
+  a.localeCompare(b)
+);
 ---
 <Base title={title} description={description} url={url} type={type} lang={lang}>
   <p>
     Indexivへようこそ。
   </p>
+
+  <nav>
+    {kana.map(k => (
+      grouped[k] && <a href={`#${k}`}>{k}</a>
+    ))}
+  </nav>
+
+  {kana.map(k => (
+    grouped[k] && (
+      <section id={k}>
+        <h2>{k}</h2>
+        <ul>
+          {grouped[k].map(entry => (
+            <li>
+              <a href={`/ja/terms/${entry.slug}/`}>
+                {entry.data.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  ))}
+  
+  <h2>Tags</h2>
+  {tags.length === 0 && <p>No tags found.</p>}
+  <ul>
+    {tags.map(tag => (
+      <li>
+        <a href={`/ja/tags/${encodeURIComponent(tag)}/`}>
+          # {tag}
+        </a>
+      </li>
+    ))}
+  </ul>
 </Base>

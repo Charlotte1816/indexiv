@@ -5,9 +5,75 @@ const description = "Welcome to Indexiv.";
 const url = "https://indexiv.org/en/";
 const type = "website";
 const lang = "en";
+
+import { getCollection } from 'astro:content';
+const entries = await getCollection('en');
+
+// ソート
+entries.sort((a, b) =>
+  a.data.indexKey.localeCompare(b.data.indexKey)
+);
+
+// グループ化
+const grouped = {};
+
+for (const entry of entries) {
+  const letter = entry.data.indexKey[0].toUpperCase();
+  if (!grouped[letter]) grouped[letter] = [];
+  grouped[letter].push(entry);
+}
+
+const letters = Object.keys(grouped).sort();
+
+const tagSet = new Set<string>();
+
+for (const entry of entries) {
+  if (Array.isArray(entry.data.tags)) {
+    for (const tag of entry.data.tags) {
+      tagSet.add(tag);
+    }
+  }
+}
+
+const tags = Array.from(tagSet).sort((a, b) =>
+  a.localeCompare(b)
+);
 ---
 <Base title={title} description={description} url={url} type={type} lang={lang}>
   <p>
     Welcome to Indexiv.
   </p>
+
+  <nav>
+    {letters.map(l => <a href={`#${l}`}>{l}</a>)}
+  </nav>
+
+  {letters.map(letter => (
+    <section id={letter}>
+      <h2>{letter}</h2>
+      <ul>
+        {grouped[letter].map(entry => (
+          <li>
+            <a href={`/en/terms/${entry.slug}/`}>
+              {entry.data.title}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+
+  <h2>Tags</h2>
+
+  {tags.length === 0 && <p>No tags found.</p>}
+
+  <ul>
+    {tags.map(tag => (
+      <li>
+        <a href={`/en/tags/${encodeURIComponent(tag)}/`}>
+          # {tag}
+        </a>
+      </li>
+    ))}
+  </ul>
 </Base>

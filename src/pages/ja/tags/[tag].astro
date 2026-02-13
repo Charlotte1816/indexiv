@@ -1,36 +1,58 @@
 ---
-import Base from '../../../layouts/BaseLayout.astro';
-const title = "Tags";
-const description = "Tags index";
-const url = "https://indexiv.org/ja/tags/";
-const type = "website";
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+const url = "https://indexiv.org/ja/terms/" + Astro.params.tag + "/";
+const type = "article";
 const lang = "ja";
 
+import { getCollection } from 'astro:content';
+
 export async function getStaticPaths() {
-    const allPosts = Object.values(import.meta.glob('../posts/*.md', { eager: true }));
-    return [
-        { params: { tag: "website" }, props: { posts: allPosts } },
-        { params: { tag: "development" }, props: { posts: allPosts } },
-        { params: { tag: "math" }, props: { posts: allPosts } },
-        { params: { tag: "physics" }, props: { posts: allPosts } },
-        { params: { tag: "tex" }, props: { posts: allPosts } },
-        { params: { tag: "writing" }, props: { posts: allPosts } },
-        { params: { tag: "books" }, props: { posts: allPosts } },
-        { params: { tag: "music" }, props: { posts: allPosts } },
-        { params: { tag: "anime" }, props: { posts: allPosts } },
-        { params: { tag: "games" }, props: { posts: allPosts } },
-        { params: { tag: "movies" }, props: { posts: allPosts } },
-        { params: { tag: "misc" }, props: { posts: allPosts } },
-    ];
+    const entries = await getCollection('ja');
+
+    // 全タグ抽出
+    const tagSet = new Set();
+
+    for (const entry of entries) {
+        entry.data.tags?.forEach(tag => tagSet.add(tag));
+    }
+
+    return Array.from(tagSet).map(tag => ({
+        params: { tag },
+        props: { tag }
+    }));
 }
 
-const { tag } = Astro.params;
-const { posts } = Astro.props;
-const filteredPosts = posts.filter((post) => post.frontmatter.tags?.includes(tag));
+const { tag } = Astro.props;
+const entries = await getCollection('ja');
+
+// 該当タグでフィルタ
+const filtered = entries.filter(e =>
+    e.data.tags?.includes(tag)
+);
+
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+
+const crumbs = [
+    { label: "Home", href: "/ja/" },
+    { label: tag, href: `/ja/tags/${tag}/` }
+];
 ---
-<Base title={title} description={description} url={url} type={type} lang={lang}>
-    <p>{tag}</p>
+
+<BaseLayout
+    title={`Tag: ${tag}`}
+    description={`Entries tagged with ${tag}`}
+    url={`https://indexiv.org/ja/tags/${tag}/`}
+    type={type}
+    lang={lang}
+>
+    <Breadcrumb items={crumbs} />
     <ul>
-        {filteredPosts.map((post: any) => <li><a href={post.url}>{post.frontmatter.title} [{post.frontmatter.date}]</a></li>)}
+        {filtered.map(entry => (
+        <li>
+            <a href={`/ja/terms/${entry.slug}/`}>
+            {entry.data.title}
+            </a>
+        </li>
+        ))}
     </ul>
-</Base>
+</BaseLayout>
