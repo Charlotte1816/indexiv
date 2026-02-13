@@ -1,0 +1,45 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/layout.css';
+import '../styles/heading.css';
+import '../styles/header.css';
+import '../styles/footer.css';
+import '../styles/decoration.css';
+import '../styles/tags.css';
+const { title, description, url, type, lang } = Astro.props;
+---
+<html lang={lang}>
+    <head>
+        <!-- <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest"> -->
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+
+        <link href="https://use.fontawesome.com/releases/v7.2.0/css/all.css" rel="stylesheet">
+
+        <title>Indexiv | {title}</title>
+        <meta name="description" content={description} />
+
+        <meta property="og:type" content={type} />
+        <meta property="og:title" content={`Indexiv | ${title}`} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={url} />
+
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content={`Indexiv | ${title}`} />
+        <meta name="twitter:description" content={description} />
+    </head>
+    <body>
+        <Header />
+        <main>
+        <h1>{title}</h1>
+        <slot />
+        </main>
+        <Footer title={title} />
+    </body>
+</html>

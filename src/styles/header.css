@@ -1,0 +1,58 @@
+.header-inner {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  column-gap: 1rem;
+  align-items: center;
+}
+
+/* .logo-wrap {
+  grid-row: 1 / span 2;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 60px;
+  height: auto;
+} */
+
+/* site name */
+.site-name {
+  grid-column: 1;
+  grid-row: 1;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: serif;
+}
+
+/* navigation */
+.site-nav {
+  grid-column: 1;
+  grid-row: 2;
+
+  font-size: 0.9rem;
+}
+
+.sep {
+  margin: 0 0.2rem;
+  color: var(--accent-muted);
+}
+
+/* actions */
+.header-actions {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* buttons */
+.RSS {
+  font-size: 1.2rem;
+}
+
+.X {
+  font-size: 1.4rem;
+}

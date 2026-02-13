@@ -1,0 +1,14 @@
+---
+import Baselayout from './BaseLayout.astro';
+const { frontmatter } = Astro.props;
+---
+<Baselayout title={frontmatter.title} description={frontmatter.description} url={Astro.request.url} type="article" lang={frontmatter.lang}>
+    <p>date：{frontmatter.date}</p>
+    <p>description：{frontmatter.description}</p>
+    <i class="fa-solid fa-tags"></i> Tags:
+    {frontmatter.tags.map((tag: string) => (
+    <a class="tag" href={`../tags/${tag}`}># {tag}</a>
+    ))}
+    <h4></h4>
+    <slot />
+</Baselayout>

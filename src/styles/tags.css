@@ -1,0 +1,16 @@
+.tags {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-top: 1em;
+}
+
+.tag {
+    padding: 0em 0.3em;
+}
+
+@media (max-width: 768px) {
+    .tags {
+        flex-direction: row;
+    }
+}

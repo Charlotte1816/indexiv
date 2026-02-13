@@ -1,0 +1,31 @@
+---
+import Base from '../../layouts/BaseLayout.astro';
+
+const allPosts = Object.values(import.meta.glob('./posts/*.md', { eager: true }));
+const tags = [...new Set(allPosts.map((post: any) => post.frontmatter.tags).flat())];
+
+const title = "Blog";
+const description = "dev news";
+const url = "https://indexiv.org/ja/blog/";
+const type = "website";
+const lang = "ja";
+---
+<Base title={title} description={description} url={url} type={type} lang={lang}>
+    <div class="blog">
+      <div class="blog-posts">
+        <p>お知らせ</p>
+        <ul>
+            {allPosts.map((post: any) => <li><a href={post.url}>{post.frontmatter.title} [{post.frontmatter.date}]</a></li>)}
+        </ul>
+      </div>
+
+      <div class="blog-tags">
+        <p><i class="fa-solid fa-tags"></i> Tags</p>
+        <div class="tags">
+            {tags.map((tag) => (
+            <a class="tag" href={`/ja/tags/${tag}`}># {tag}</a>
+            ))}
+        </div>
+      </div>
+    </div>
+</Base>
