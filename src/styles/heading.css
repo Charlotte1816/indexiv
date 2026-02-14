@@ -1,39 +1,13 @@
 h1 {
-    font-size: 1.4rem;
+    font-family: serif;
+    font-size: 1.5rem;
     position: relative;
-    border-bottom: solid var(--border-medium) var(--accent-hover);
 }
 
 h2 {
+    font-family: serif;
     font-size: medium;
-    padding: 3px 25px;
-    padding-right: 5px;
-    margin: 0em 0em;
     position: relative;
-    display: inline-block;
-    border-bottom: solid var(--border-thin) var(--accent-hover);
-}
-
-h2::before {
-    content: '';
-    position: absolute;
-    left: 4px;
-    top: 25%;
-    width: 3px;
-    height: 60%;
-    background-color: var(--accent-hover);
-    transform: rotate(-25deg);
-}
-
-h2::after {
-    content: '';
-    position: absolute;
-    left: 12px;
-    top: 25%;
-    width: 2px;
-    height: 60%;
-    background-color: var(--h2);
-    transform: rotate(-25deg);
 }
 
 h3 {

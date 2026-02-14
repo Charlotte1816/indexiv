@@ -97,3 +97,21 @@ footer {
     order: 1;
   }
 }
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 100px;
+  gap: 2rem;
+}
+
+.toc {
+  position: sticky;
+  top: 2rem;
+  font-size: 0.9rem;
+  align-self: start;
+}
+
+.toc ul {
+  /* list-style: none; */
+  padding: 0;
+}

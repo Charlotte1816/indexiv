@@ -16,7 +16,7 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { Content, headings } = await entry.render();
 
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 
@@ -35,5 +35,27 @@ const crumbs = [
     <a class="tag" href={`../../tags/${tag}`}># {tag}</a>
     ))}
     <h4></h4>
-    <Content />
+
+    <div class="layout">
+        <main>
+            <Content />
+        </main>
+
+        <aside class="toc">
+            <p>目次</p>
+            <ul>
+                {headings.map(h => (
+                    <li
+                        data-depth={h.depth}
+                        style={`margin-left:${(h.depth - 2) * 12}px`}
+                    >
+                        <a href={`#${h.slug}`} data-slug={h.slug}>
+                            {h.text}
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        </aside>
+    </div>
+
 </BaseLayout>

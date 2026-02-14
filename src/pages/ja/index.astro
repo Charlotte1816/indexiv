@@ -55,37 +55,14 @@ const tags = Array.from(tagSet).sort((a, b) =>
   <p>
     Indexivへようこそ。
   </p>
-
-  <nav>
-    {kana.map(k => (
-      grouped[k] && <a href={`#${k}`}>{k}</a>
-    ))}
-  </nav>
-
-  {kana.map(k => (
-    grouped[k] && (
-      <section id={k}>
-        <h2>{k}</h2>
-        <ul>
-          {grouped[k].map(entry => (
-            <li>
-              <a href={`/ja/terms/${entry.slug}/`}>
-                {entry.data.title}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </section>
-    )
-  ))}
   
-  <h2>Tags</h2>
+  <h2>Categories</h2>
   {tags.length === 0 && <p>No tags found.</p>}
   <ul>
     {tags.map(tag => (
       <li>
         <a href={`/ja/tags/${encodeURIComponent(tag)}/`}>
-          # {tag}
+          {tag}
         </a>
       </li>
     ))}

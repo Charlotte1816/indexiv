@@ -114,3 +114,14 @@ summary::after {
     content: " [show/hide]";
     font-size: 0.75em;
 }
+
+.references {
+    font-size: 0.8rem;
+    margin: 1em;
+}
+
+.csl-entry {
+    margin-bottom: 0.5rem;
+    text-indent: -1.5em;
+    padding-left: 1.5em;
+}

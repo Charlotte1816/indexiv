@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" version="1.1" class="in-text">
+  <info>
+    <title>Numeric</title>
+    <updated>2025-10-27T00:00:00+09:00</updated>
+    <author>
+      <name>Charlotte</name>
+    </author>
+    <category citation-format="numeric"/>
+    <summary>Numeric citations in square brackets [1], and bibliography entries prefixed with the same label.</summary>
+  </info>
+
+  <macro name="identifiers">
+    <group delimiter=", ">
+      <!-- <text variable="DOI" prefix="doi:"/> -->
+      <text variable="URL"/>
+    </group>
+  </macro>
+
+  <citation collapse="citation-number">
+    <layout prefix="[" suffix="]" delimiter=", ">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+
+  <bibliography hanging-indent="true" entry-spacing="0" line-spacing="1">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout>
+      <group delimiter=" ">
+        <text variable="citation-number" prefix="[" suffix="]"/>
+        <names variable="author">
+          <name and="text" delimiter=", "/>
+        </names>
+        <date variable="issued" prefix="(" suffix=").">
+          <date-part name="year"/>
+        </date>
+        <text variable="title" suffix="."/>
+        <group delimiter=", ">
+          <text variable="publisher"/>
+          <text variable="publisher-place"/>
+          <text variable="container-title"/>
+          <group delimiter=": ">
+            <text variable="volume"/>
+            <text variable="page"/>
+          </group>
+        </group>
+        <text macro="identifiers" prefix="[" suffix="]"/>
+      </group>
+    </layout>
+  </bibliography>
+</style>

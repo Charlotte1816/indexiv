@@ -36,6 +36,33 @@ const crumbs = [
     { label: "Home", href: "/ja/" },
     { label: tag, href: `/ja/tags/${tag}/` }
 ];
+
+const kana = [
+    'あ','い','う','え','お',
+    'か','き','く','け','こ',
+    'さ','し','す','せ','そ',
+    'た','ち','つ','て','と',
+    'な','に','ぬ','ね','の',
+    'は','ひ','ふ','へ','ほ',
+    'ま','み','む','め','も',
+    'や','ゆ','よ',
+    'ら','り','る','れ','ろ',
+    'わ'
+];
+
+// locale指定が重要
+entries.sort((a, b) =>
+    a.data.indexKey.localeCompare(b.data.indexKey)
+);
+
+// グループ化
+const grouped = {};
+
+for (const entry of entries) {
+    const key = entry.data.indexKey;
+    if (!grouped[key]) grouped[key] = [];
+    grouped[key].push(entry);
+}
 ---
 
 <BaseLayout
@@ -46,13 +73,27 @@ const crumbs = [
     lang={lang}
 >
     <Breadcrumb items={crumbs} />
-    <ul>
-        {filtered.map(entry => (
-        <li>
-            <a href={`/ja/terms/${entry.slug}/`}>
-            {entry.data.title}
-            </a>
-        </li>
+
+    <nav>
+    {kana.map(k => (
+        grouped[k] && <a href={`#${k}`}>{k}</a>
         ))}
-    </ul>
+    </nav>
+
+    {kana.map(k => (
+        grouped[k] && (
+        <section id={k}>
+            <h2>{k}</h2>
+            <ul>
+            {grouped[k].map(entry => (
+                <li>
+                <a href={`/ja/terms/${entry.slug}/`}>
+                    {entry.data.title}
+                </a>
+                </li>
+            ))}
+            </ul>
+        </section>
+        )
+    ))}
 </BaseLayout>
