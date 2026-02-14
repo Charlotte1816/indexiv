@@ -33,7 +33,8 @@ const filtered = entries.filter(e =>
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 
 const crumbs = [
-    { label: "Home", href: "/ja/" },
+    { label: "Home", href: "/" },
+    { label: "Ja", href: "/ja/" },
     { label: tag, href: `/ja/tags/${tag}/` }
 ];
 
@@ -73,12 +74,6 @@ for (const entry of entries) {
     lang={lang}
 >
     <Breadcrumb items={crumbs} />
-
-    <nav>
-    {kana.map(k => (
-        grouped[k] && <a href={`#${k}`}>{k}</a>
-        ))}
-    </nav>
 
     {kana.map(k => (
         grouped[k] && (

@@ -5,8 +5,17 @@ const description = "Indexiv.orgについて";
 const url = "https://indexiv.org/ja/about/";
 const type = "website";
 const lang = "ja";
+
+import Breadcrumb from '../../components/Breadcrumb.astro';
+const crumbs = [
+    { label: "Home", href: "/" },
+    { label: "Ja", href: "/ja/" },
+    { label: "About", href: "/ja/about/" }
+];
 ---
 <Base title={title} description={description} url={url} type={type} lang={lang}>
+  <Breadcrumb items={crumbs} />
+  <h1>{title}</h1>
   <p>
     Indexiv.orgについて
   </p>

@@ -1,5 +1,11 @@
 ---
 import Base from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+const crumbs = [
+    { label: "Home", href: "/" },
+    { label: "Ja", href: "/ja/" },
+    { label: "Blog", href: "/ja/blog/" },
+];
 
 const allPosts = Object.values(import.meta.glob('./posts/*.md', { eager: true }));
 
@@ -10,6 +16,8 @@ const type = "website";
 const lang = "ja";
 ---
 <Base title={title} description={description} url={url} type={type} lang={lang}>
+  <Breadcrumb items={crumbs} />
+  <h1>{title}</h1>
   <p>お知らせ</p>
   <ul>
       {allPosts.map((post: any) => <li><a href={post.url}>{post.frontmatter.title} [{post.frontmatter.date}]</a></li>)}

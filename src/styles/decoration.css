@@ -11,6 +11,7 @@ a:hover {
 
 p {
     margin-block: 1em;
+    padding-left: .5em;
 }
 
 .katex {
@@ -40,9 +41,38 @@ pre {
     border: solid var(--border-thin) var(--code-border);
 }
 
-blockquote {
+/* blockquote {
     padding-left: 15px;
     border-left: var(--border-medium) solid var(--text);
+} */
+
+blockquote {
+    position: relative;
+    margin: 0;
+    padding: 3em 2.5em 2em 3.5em;
+    color: #333333;
+    background-color: #eeeeee;
+    font-style: italic;
+}
+
+blockquote::before {
+    display: inline-block;
+    position: absolute;
+    top: 1em;
+    left: 1.5em;
+    width: 2em;
+    height: 2em;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4.58341 17.3211C3.55316 16.2274 3 15 3 13.0103C3 9.51086 5.45651 6.37366 9.03059 4.82318L9.92328 6.20079C6.58804 8.00539 5.93618 10.346 5.67564 11.822C6.21263 11.5443 6.91558 11.4466 7.60471 11.5105C9.40908 11.6778 10.8312 13.159 10.8312 15C10.8312 16.933 9.26416 18.5 7.33116 18.5C6.2581 18.5 5.23196 18.0095 4.58341 17.3211ZM14.5834 17.3211C13.5532 16.2274 13 15 13 13.0103C13 9.51086 15.4565 6.37366 19.0306 4.82318L19.9233 6.20079C16.588 8.00539 15.9362 10.346 15.6756 11.822C16.2126 11.5443 16.9156 11.4466 17.6047 11.5105C19.4091 11.6778 20.8312 13.159 20.8312 15C20.8312 16.933 19.2642 18.5 17.3312 18.5C16.2581 18.5 15.232 18.0095 14.5834 17.3211Z' fill='%232589d0'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    content: '';
+}
+
+blockquote p {
+    margin-top: 0;
+}
+
+blockquote p:last-of-type {
+    margin-bottom: 0;
 }
 
 strong {
@@ -124,4 +154,63 @@ summary::after {
     margin-bottom: 0.5rem;
     text-indent: -1.5em;
     padding-left: 1.5em;
+}
+
+.toc-list {
+    list-style-type: disc;
+    list-style-position: inside;
+    border: 2px solid #2589d0;
+}
+
+.toc-list div {
+    display: flex;
+    margin-left: 0;
+    padding: 2px 5px 5px 10px;
+    background-color: #2589d0;
+    color: #fff;
+    font-weight: 600;
+    font-family: sans;
+    font-size: medium;
+}
+
+.toc-list div::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f0ca";
+    margin-right: 10px;
+    padding-top: 5px;
+}
+
+.toc-list ul {
+    list-style-type: disc;
+    margin: 0;
+    padding: 0.5em 1.5em;
+    font-size: 0.8rem;
+}
+
+.toc-list li {
+    padding: .3em .3em .3em 0;
+}
+
+.toc-list li:not(:last-child) {
+    border-bottom: 1px dashed #2589d0;
+}
+
+.toc-list li::marker {
+    color: #2589d0;
+    font-size: 1.1em;
+}
+
+.toc-sublist {
+    list-style-type: none;
+    margin: 0;
+    padding: 1em 1em 1em 2.5em;
+    /* border: 1px solid #2589d0; */
+    border-top: 3px double #2589d0;
+    /* border-bottom: 1px solid #2589d0; */
+    /* background-color: #eeeeee; */
+}
+
+.toc-sublist li {
+    padding: .2em;
+    font-size: 0.8rem;
 }

@@ -30,14 +30,28 @@ const crumbs = [
     <Breadcrumb items={crumbs} />
     <p>pubDate: {entry.data.date}</p>
     <p>abstract: {entry.data.description}</p>
-    <i class="fa-solid fa-tags"></i> Tags:
-    {entry.data.tags.map((tag: string) => (
-    <a class="tag" href={`../../tags/${tag}`}># {tag}</a>
-    ))}
+    <p>Category:
+        {entry.data.tags.map((tag: string) => (
+        <a class="tag" href={`../../tags/${tag}`}># {tag}</a>
+        ))}
+    </p>
     <h4></h4>
 
     <div class="layout">
         <main>
+            <p>Table of Contents</p>
+            <ul>
+                {headings.map(h => (
+                    <li
+                        data-depth={h.depth}
+                        style={`margin-left:${(h.depth - 2) * 12}px`}
+                    >
+                        <a href={`#${h.slug}`} data-slug={h.slug}>
+                            {h.text}
+                        </a>
+                    </li>
+                ))}
+            </ul>
             <Content />
         </main>
 

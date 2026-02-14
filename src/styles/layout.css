@@ -112,6 +112,19 @@ footer {
 }
 
 .toc ul {
-  /* list-style: none; */
   padding: 0;
+}
+
+.toc div {
+  padding: 0.2em;
+  font-size: 0.8rem;
+  font-weight: bold;
+  /* border-top: 1px solid #2589d0; */
+}
+
+.toc div::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f0ca";
+    margin-right: 5px;
+    padding-top: 5px;
 }

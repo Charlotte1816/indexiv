@@ -21,29 +21,45 @@ const { Content, headings } = await entry.render();
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 
 const crumbs = [
-    { label: "Home", href: "/ja/" },
+    { label: "Home", href: "/" },
+    { label: "Ja", href: "/ja/" },
     { label: entry.data.title, href: `/ja/terms/${entry.slug}/` }
 ];
 ---
 
 <BaseLayout title={entry.data.title} description={entry.data.description} url={url} type={type} lang={lang}>
     <Breadcrumb items={crumbs} />
-    <p>投稿日：{entry.data.date}</p>
-    <p>概要：{entry.data.description}</p>
-    <i class="fa-solid fa-tags"></i> Tags:
-    {entry.data.tags.map((tag: string) => (
-    <a class="tag" href={`../../tags/${tag}`}># {tag}</a>
-    ))}
-    <h4></h4>
+    <h1>{entry.data.title}</h1>
+    <p><i class="fa-solid fa-calendar-days"></i> {entry.data.date}</p>
+    <p><i class="fa-solid fa-folder-closed"></i> 
+        {entry.data.tags.map((tag: string) => (
+        <a class="tag" href={`../../tags/${tag}`}>{tag}</a>
+        ))}
+    </p>
 
     <div class="layout">
         <main>
+            <div class="toc-list">
+                <div>Table of Contents</div>
+                <ul>
+                    {headings.map(h => (
+                        <li
+                            data-depth={h.depth}
+                            style={`margin-left:${(h.depth - 2) * 12}px`}
+                        >
+                            <a href={`#${h.slug}`} data-slug={h.slug}>
+                                {h.text}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+            </div>
             <Content />
         </main>
 
         <aside class="toc">
-            <p>目次</p>
-            <ul>
+            <div>ToC</div>
+            <ul class="toc-sublist">
                 {headings.map(h => (
                     <li
                         data-depth={h.depth}

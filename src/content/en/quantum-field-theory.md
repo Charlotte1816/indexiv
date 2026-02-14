@@ -6,8 +6,6 @@ indexKey: "quantum"
 tags: ["qft"]
 core: true
 ---
-## ToC
-
 ## What
 
 ## Why

@@ -37,9 +37,8 @@ const { title, description, url, type, lang } = Astro.props;
     <body>
         <Header />
         <main>
-        <h1>{title}</h1>
         <slot />
         </main>
-        <Footer title={title} />
+        <Footer />
     </body>
 </html>

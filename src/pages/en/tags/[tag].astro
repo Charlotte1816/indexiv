@@ -64,10 +64,6 @@ const letters = Object.keys(grouped).sort();
 >
     <Breadcrumb items={crumbs} />
 
-    <nav>
-        {letters.map(l => <a href={`#${l}`}>{l}</a>)}
-    </nav>
-
     {letters.map(letter => (
         <section id={letter}>
         <h2>{letter}</h2>

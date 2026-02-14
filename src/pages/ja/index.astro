@@ -50,8 +50,16 @@ for (const entry of entries) {
 const tags = Array.from(tagSet).sort((a, b) =>
   a.localeCompare(b)
 );
+
+import Breadcrumb from '../../components/Breadcrumb.astro';
+const crumbs = [
+    { label: "Home", href: "/" },
+    { label: "Ja", href: "/ja/" }
+];
 ---
 <Base title={title} description={description} url={url} type={type} lang={lang}>
+  <Breadcrumb items={crumbs} />
+  <h1>{title}</h1>
   <p>
     Indexivへようこそ。
   </p>
