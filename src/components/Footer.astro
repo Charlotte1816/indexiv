@@ -1,0 +1,43 @@
+---
+// 現在のロケールをBaseLayoutから取得
+const { currentLocale } = Astro.props;
+---
+<footer>
+    <!-- copyright -->
+    <div class="copyright">
+        <i class="fa-regular fa-copyright"></i> {new Date().getFullYear()} IndeXiv.</p>
+    </div>
+
+    <!-- nav -->
+    <nav class="footer-nav">
+        <a href={`/${currentLocale}/`}>Home</a>
+        <span class="footer-separator">|</span>
+        <a href={`/${currentLocale}/about`}>About</a>
+        <span class="footer-separator">|</span>
+        <a href={`/${currentLocale}/misc`}>Misc</a>
+    </nav>
+</footer>
+
+<style>
+    footer {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        border-top: 1px solid var(--gray);
+        padding: 0.3rem;
+    }
+
+    .copyright {
+        grid-column: 1;
+        font-size: small;
+    }
+
+    .footer-separator {
+        margin: 0 0.2rem;
+    }
+
+    .footer-nav {
+        grid-column: 3;
+        font-size: small;
+    }
+</style>

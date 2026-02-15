@@ -1,24 +1,24 @@
 ---
 // レイアウト読み込み
-import BaseLayout from "../components/BaseLayout.astro"
+import BaseLayout from "../../components/BaseLayout.astro"
 // 記事データを取得
 import { getCollection } from "astro:content";
-// enコレクションの全記事を取得
-const entries = await getCollection("en");
+// jaコレクションの全記事を取得
+const entries = await getCollection("ja");
 // カテゴリの重複を排除してリスト化
 const categories = [...new Set(entries.map(e => e.data.category))];
 
-// カテゴリ名と英語表記の対応表
+// カテゴリ名と日本語表記の対応表
 const catnames: Record<string, string> = {
-	"quantum-field-theory": "Quantum Field Theory",
-	"string-theory": "String Theory",
+	"quantum-field-theory": "場の量子論",
+	"string-theory": "弦理論",
 }
 
 // props
-const lang = "en";
+const lang = "ja";
 const type = "website";
 const title = "Home";
-const description = "We collect and share information about theoretical physics.";
+const description = "理論物理学に関する情報を収集・共有しています。";
 ---
 <!-- レイアウト呼び出し -->
 <BaseLayout lang={lang} type={type} title={title} description={description}>
@@ -28,7 +28,7 @@ const description = "We collect and share information about theoretical physics.
 	<ul>
 		{categories.map(cat => (
 			<li>
-				{/* リンクを英語表記 */}
+				{/* リンクを日本語表記 */}
 				<a href={`/${lang}/${cat}/`}>{catnames[cat]}</a>
 			</li>
 		))}

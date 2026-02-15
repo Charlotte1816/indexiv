@@ -1,0 +1,68 @@
+---
+// レイアウト読み込み
+import BaseLayout from "../../../components/BaseLayout.astro";
+// 記事データの取得とMarkdownレンダリング関数の読み込み
+import { getCollection, render } from "astro:content";
+
+// 静的パス生成
+export async function getStaticPaths() {
+    // jaコレクションの全記事を取得
+    const entries = await getCollection("ja");
+    // 各記事のslugを分割してカテゴリーとスラッグを抽出し静的パスを生成
+    return entries.map((entry) => {
+        // slugをcategoryとslugに分割
+        const [category, slug] = entry.slug.split("/");
+        // 静的パスと記事データを返す
+        return {
+            params: { category, slug },
+            props: { entry },
+        };
+    });
+    
+};
+
+// URLパラメータから記事データを取得
+const { entry } = Astro.props;
+// MarkdownコンテンツをHTMLに変換して目次データも取得
+const { Content, headings } = await render(entry);
+
+// props
+const lang = "ja";
+const type = "article";
+const title = entry.data.title;
+const description = title + "についての解説";
+---
+<!-- レイアウト呼び出し -->
+<BaseLayout lang={lang} type={type} title={title} description={description}>
+    <h1>{title}</h1>
+    <!-- コンテンツ構造 -->
+    <div class="content">
+        <!-- 左サイド -->
+        <div class="main">
+            <!-- 目次ボックス -->
+            <div class="toc-box">
+                <div class="toc-box-title">Table of Contents</div>
+                <ul class="toc-box-list">
+                    {headings.map(h => (
+                        <li class="toc-box-item">
+                            <a href={`#${h.slug}`}>{h.text}</a>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+            <!-- 本文 -->
+            <Content />
+        </div>
+        <!-- 右サイド -->
+        <aside class="toc">
+            <div class="toc-title">ToC</div>
+            <ul class="toc-sublist">
+                {headings.map(h => (
+                    <li class="toc-subitem">
+                        <a href={`#${h.slug}`}>{h.text}</a>
+                    </li>
+                ))}
+            </ul>
+        </aside>
+    </div>
+</BaseLayout>
