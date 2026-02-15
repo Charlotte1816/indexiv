@@ -1,0 +1,187 @@
+/* root */
+:root {
+    /* 色を置き換えをしない */
+    color-scheme: only;
+    /* UD アクセントカラー */
+    --accent-red: rgb(255, 40, 0);
+    --accent-yellow: rgb(255, 245, 0);
+    --accent-green: rgb(53, 161, 107);
+    --accent-blue: rgb(0, 65, 255);
+    --accent-sky: rgb(102, 204, 255);
+    --accent-pink: rgb(255, 153, 160);
+    --accent-orange: rgb(255, 153, 0);
+    --accent-purple: rgb(154, 0, 121);
+    --accent-brown: rgb(102, 51, 0);
+    /* UD ベースカラー */
+    --base-pink: rgb(255, 209, 209);
+    --base-cream: rgb(255, 255, 153);
+    --base-glass: rgba(203, 242, 102);
+    --base-sky: rgb(180, 235, 250);
+    --base-beige: rgb(237, 197, 143);
+    --base-green: rgb(135, 231, 176);
+    --base-purple: rgb(199, 178, 222);
+    /* UD 無彩色 */
+    --white: rgb(255, 255, 255);
+    --lightgray: rgb(200, 200, 203);
+    --gray: rgb(127, 135, 143);
+    --black: rgb(0, 0, 0);
+    /* お気に入り */
+    --mygray: #eeeeee;
+    --metropolis: #23373B;
+}
+
+/* layouts */
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    content-visibility: auto;
+}
+
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    max-width: 1000px;
+    margin: auto;
+    padding: 1rem;
+    font-family: sans-serif;
+    color: var(--black);
+    background-color: var(--white);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* decoration */
+
+p {
+    margin-block: 1rem;
+    padding: 0.5rem;
+}
+
+a {
+    color: var(--accent-blue);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--accent-orange);
+    text-decoration: underline;
+}
+
+/* headings */
+
+h1, h2 {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0rem 0.5rem 0.5rem;
+    color: var(--black);
+    background-color: var(--mygray);
+    font-size: medium;
+}
+
+h1::before, h2::before {
+    display: inline-block;
+    width: 0.3rem;
+    height: 1.5rem;
+    margin-right: 0.5rem;
+    background-color: var(--metropolis);
+    content: '';
+}
+
+/* コンテンツ構造 */
+.content {
+    display: grid;
+    grid-template-columns: 1fr 100px;
+    gap: 2rem;
+}
+
+/* 右目次 */
+.toc {
+    position: sticky;
+    top: 2rem;
+    padding-right: 0.5rem;
+    font-size: 0.9rem;
+    align-self: start;
+}
+
+.toc-sublist {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    border-top: 3px double var(--metropolis);
+}
+
+.toc-subitem {
+    padding: .1rem;
+    font-size: 0.8rem;
+}
+
+.toc-title {
+    padding: 0.2rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.toc-title::before {
+    font-family: "Font Awesome 7 Free";
+    content: "\f0ca";
+    margin-right: 5px;
+    padding-top: 5px;
+}
+
+/* 目次ボックス */
+.toc-box {
+    list-style-type: disc;
+    list-style-position: inside;
+    border: 2px solid var(--metropolis);
+}
+
+.toc-box-title {
+    display: flex;
+    margin-left: 0;
+    padding: 2px 5px 5px 10px;
+    background-color: var(--metropolis);
+    color: var(--white);
+    font-weight: 600;
+    font-family: sans;
+    font-size: medium;
+}
+
+.toc-box-title::before {
+    font-family: "Font Awesome 7 Free";
+    content: "\f0ca";
+    margin-right: 10px;
+    padding-top: 5px;
+}
+
+.toc-box-list {
+    list-style-type: disc;
+    margin: 0;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.9rem;
+}
+
+.toc-box-item {
+    padding: .3rem;
+}
+
+.toc-box-item:not(:last-child) {
+    border-bottom: 1px dashed var(--metropolis);
+}
+
+.toc-box-item::marker {
+    color: var(--metropolis);
+    font-size: 1.0rem;
+}
+
+/* lastModified */
+
+.lastModified {
+    align-items: center;
+    font-size: small;
+    padding: 0 0.5rem;
+}

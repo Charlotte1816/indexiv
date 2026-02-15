@@ -1,0 +1,14 @@
+---
+// レイアウト読み込み
+import BaseLayout from "../../components/BaseLayout.astro"
+// props
+const lang = "ja";
+const type = "website";
+const title = "Misc";
+const description = "未定";
+---
+<!-- レイアウト呼び出し -->
+<BaseLayout lang={lang} type={type} title={title} description={description}>
+    <h1>{title}</h1>
+    <p>{description}</p>
+</BaseLayout>
