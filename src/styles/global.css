@@ -45,7 +45,7 @@ body {
     max-width: 1000px;
     margin: auto;
     padding: 1rem;
-    font-family: sans-serif;
+    font-family: "Noto Sans JP", "Noto Sans", sans-serif;
     color: var(--black);
     background-color: var(--white);
 }
@@ -102,7 +102,7 @@ h1::before, h2::before {
 /* 右目次 */
 .toc {
     position: sticky;
-    top: 2rem;
+    top: 0.5rem;
     padding-right: 0.5rem;
     font-size: 0.9rem;
     align-self: start;
@@ -121,16 +121,18 @@ h1::before, h2::before {
 }
 
 .toc-title {
-    padding: 0.2rem;
     font-size: 0.8rem;
     font-weight: bold;
 }
 
-.toc-title::before {
-    font-family: "Font Awesome 7 Free";
-    content: "\f0ca";
-    margin-right: 5px;
-    padding-top: 5px;
+@media (max-width: 768px) {
+    .content {
+        grid-template-columns: 1fr;
+    }
+
+    .toc {
+        display: none;
+    }
 }
 
 /* 目次ボックス */
@@ -147,15 +149,7 @@ h1::before, h2::before {
     background-color: var(--metropolis);
     color: var(--white);
     font-weight: 600;
-    font-family: sans;
     font-size: medium;
-}
-
-.toc-box-title::before {
-    font-family: "Font Awesome 7 Free";
-    content: "\f0ca";
-    margin-right: 10px;
-    padding-top: 5px;
 }
 
 .toc-box-list {
