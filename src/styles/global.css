@@ -186,6 +186,7 @@ blockquote{
     position:relative;
     margin: 0.5rem;
     border-left: 3px solid var(--accent-blue);
+    font-size: small;
 }
 
 blockquote:before{
@@ -221,6 +222,11 @@ table {
     table-layout: fixed;
     border-bottom: 1px solid var(--accent-blue);
     border-top: 1px solid var(--accent-blue);
+    white-space: nowrap;
+}
+
+.table-wrapper {
+    overflow-x: auto;
 }
 
 table th,
