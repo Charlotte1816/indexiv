@@ -100,6 +100,28 @@ const jaUrl = new URL(jaPath, Astro.site).toString();
         <!-- tool -->
         <!-- 記号用 -->
         <link href="https://use.fontawesome.com/releases/v7.2.0/css/all.css" rel="stylesheet">
+        <!-- MathJax初期設定 -->
+        <script is:inline>
+            window.MathJax = {
+                tex: {
+                    // インライン数式
+                    inlineMath: [['$', '$']],
+                    // ディスプレイ数式
+                    displayMath: [['$$', '$$']],
+                    // 自動番号付け
+                    tags: 'ams',
+                    // ラベルIDを使用
+                    useLabelIds: true,
+                },
+                // CommonHTML出力の設定
+                chtml: {
+                    // フォントの高さ揺れ防止
+                    matchFontHeight: false,
+                }
+            };
+        </script>
+        <!-- MaJax読み込み -->
+        <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 
         <!-- title -->
         <title>IndeXiv | {title}</title>

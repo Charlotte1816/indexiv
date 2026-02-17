@@ -12,6 +12,7 @@
     "@astrojs/rss": "^4.0.15",
     "astro": "^5.17.1",
     "child_process": "^1.0.2",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "rehype-citation": "^2.3.2"
   }
 }
