@@ -1,3 +1,5 @@
+@import 'katex/dist/katex.min.css';
+
 /* root */
 :root {
     /* 色を置き換えをしない */
@@ -72,6 +74,13 @@ a:hover {
     text-decoration: underline;
 }
 
+/* markdown */
+
+strong {
+    color: var(--accent-orange);
+    margin: 0 0.2rem;
+}
+
 /* headings */
 
 h1, h2 {
@@ -107,10 +116,15 @@ h3 {
     gap: 1rem;
 }
 
+/* グリッド幅が広がらないようにする */
+.content > * {
+    min-width: 0;
+}
+
 /* 右目次 */
 .toc {
     position: sticky;
-    top: 0.5rem;
+    top: 1rem;
     padding-right: 0.5rem;
     font-size: 0.9rem;
     align-self: start;
@@ -239,11 +253,17 @@ table tr:hover {
 
 .csl-entry {
     margin: 1rem 0;
-    padding: 0 1rem;
+    padding: 0 0.5rem;
 }
 
-.csl-entry::before {
-    font-family: "FontAwesome";
-    content: '\f70e';
-    margin-right: 1rem;
+/* katex */
+
+.katex {
+    font-size: 1rem;
+}
+
+.katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0 0.5rem;
 }

@@ -1,7 +1,10 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-
+// 参考文献
 import rehypeCitation from 'rehype-citation';
+// 数式
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 
 // https://astro.build/config
 export default defineConfig({
@@ -25,10 +28,18 @@ export default defineConfig({
                 // csl: './src/content/citation-style.csl',
                 linkCitations: true,
             }],
+            // 数式
+            [rehypeKatex, {
+                // マクロ
+                macros: {
+                    "\\bm": "\\boldsymbol",
+                }
+            }],
         ],
         // remrkPlugins
         remarkPlugins: [
-            // ここにremarkプラグインを追加できます
+            // 数式
+            remarkMath,
         ]
     },
 });
