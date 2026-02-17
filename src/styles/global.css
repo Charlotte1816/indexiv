@@ -204,16 +204,6 @@ blockquote p {
     padding: 0 4rem;
 }
 
-blockquote:after{
-    position:absolute;
-    font-family:'FontAwesome';
-    content:'\f10e';
-    font-size: x-large;
-    color: var(--accent-blue);
-    right: 1rem;
-    bottom: 0rem;
-}
-
 /* table */
 
 table {
@@ -240,12 +230,12 @@ table tr:hover {
 /* reference */
 
 .csl-entry {
-    margin: 0.5rem 0;
-    padding: 0 0.5rem;
+    margin: 1rem 0;
+    padding: 0 1rem;
 }
 
 .csl-entry::before {
-    content: '•';
-    font-size: x-large;
-    margin-right: 0.5rem;
+    font-family: "FontAwesome";
+    content: '\f70e';
+    margin-right: 1rem;
 }

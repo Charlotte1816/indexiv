@@ -52,10 +52,10 @@ then the energy fluctuation $\Delta E$ exceeds the rest energy of two particles,
 
 In quantum theory, particles of the same type cannot be distinguished. This means that the state remains invariant, up to a sign, under the exchange of identical particles. Particles can be classified by this sign, and experimentally, the correspondence with spin values is known:
 
-| Sign | Type (Statistics) | Spin Value |
+| Sign | Type | Spin Value |
 | :-: | :-: | :-: |
-| $+$ | Boson (Bose-Einstein statistics) | Integer |
-| $-$ | Fermion (Fermi-Dirac statistics) | Half-integer |
+| $+$ | Boson | Integer |
+| $-$ | Fermion | Half-integer |
 
 This relationship between statistics and spin can be derived by placing fields as the fundamental constituents.
 
