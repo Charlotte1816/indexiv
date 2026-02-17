@@ -1,6 +1,6 @@
 ---
-category: string-theory
-title: 南部・後藤作用
+category: "string-theory"
+title: "南部・後藤作用"
 ---
 ## What
 

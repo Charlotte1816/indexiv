@@ -1,6 +1,6 @@
 ---
-category: string-theory
-title: Nambu-Goto Action
+category: "string-theory"
+title: "Nambu-Goto Action"
 ---
 ## What
 

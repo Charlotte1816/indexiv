@@ -1,6 +1,6 @@
 ---
-category: quantum-field-theory
-title: Feynman Propagator
+category: "quantum-field-theory"
+title: "Feynman Propagator"
 ---
 ## What
 

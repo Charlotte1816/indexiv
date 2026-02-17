@@ -96,7 +96,7 @@ h1::before, h2::before {
 .content {
     display: grid;
     grid-template-columns: 1fr 100px;
-    gap: 2rem;
+    gap: 1rem;
 }
 
 /* 右目次 */
@@ -178,4 +178,74 @@ h1::before, h2::before {
     align-items: center;
     font-size: small;
     padding: 0 0.5rem;
+}
+
+/* blockquote */
+
+blockquote{
+    position:relative;
+    margin: 0.5rem;
+    border-left: 3px solid var(--accent-blue);
+}
+
+blockquote:before{
+    position: absolute;
+    font-family: 'FontAwesome';
+    content: '\f10d';
+    font-size: x-large;
+    padding: 0 0 0 1rem;
+    color: var(--accent-blue);
+}
+
+blockquote p {
+    position: relative;
+    font-style: italic;
+    padding: 0 4rem;
+}
+
+blockquote:after{
+    position:absolute;
+    font-family:'FontAwesome';
+    content:'\f10e';
+    font-size: x-large;
+    color: var(--accent-blue);
+    right: 1rem;
+    bottom: 0rem;
+}
+
+/* table */
+
+table {
+    border-collapse: collapse;
+    margin: 0 auto;
+    table-layout: fixed;
+    border-bottom: 1px solid var(--accent-blue);
+    border-top: 1px solid var(--accent-blue);
+}
+
+table th,
+table td {
+    padding: 0.5em;
+}
+
+table thead tr{
+    border-bottom: 3px double var(--accent-blue);
+}
+
+table tr:hover {
+	cursor: default;
+	background-color: var(--mygray);
+}
+
+/* reference */
+
+.csl-entry {
+    margin: 0.5rem 0;
+    padding: 0 0.5rem;
+}
+
+.csl-entry::before {
+    content: '•';
+    font-size: x-large;
+    margin-right: 0.5rem;
 }
