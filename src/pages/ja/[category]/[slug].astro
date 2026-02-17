@@ -43,11 +43,13 @@ const description = title + "についての解説";
             <div class="toc-box">
                 <div class="toc-box-title">Table of Contents</div>
                 <ul class="toc-box-list">
-                    {headings.map(h => (
-                        <li class="toc-box-item">
-                            <a href={`#${h.slug}`}>{h.text}</a>
-                        </li>
-                    ))}
+                    {headings
+                        .filter(h => h.depth <= 2)
+                        .map(h => (
+                            <li class="toc-box-item">
+                                <a href={`#${h.slug}`}>{h.text}</a>
+                            </li>
+                        ))}
                 </ul>
             </div>
             <!-- 本文 -->
@@ -57,10 +59,12 @@ const description = title + "についての解説";
         <aside class="toc">
             <div class="toc-title">ToC</div>
             <ul class="toc-sublist">
-                {headings.map(h => (
-                    <li class="toc-subitem">
-                        <a href={`#${h.slug}`}>{h.text}</a>
-                    </li>
+                {headings
+                    .filter(h => h.depth <= 2)
+                    .map(h => (
+                        <li class="toc-subitem">
+                            <a href={`#${h.slug}`}>{h.text}</a>
+                        </li>
                 ))}
             </ul>
         </aside>

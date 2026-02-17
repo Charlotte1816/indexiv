@@ -92,10 +92,18 @@ h1::before, h2::before {
     content: '';
 }
 
+h3 {
+    margin-block: 0.5rem;
+    padding: 0.5rem;
+    color: var(--black);
+    background-color: var(--mygray);
+    font-size: medium;
+}
+
 /* コンテンツ構造 */
 .content {
     display: grid;
-    grid-template-columns: 1fr 100px;
+    grid-template-columns: 1fr 150px;
     gap: 1rem;
 }
 
@@ -194,14 +202,14 @@ blockquote:before{
     font-family: 'FontAwesome';
     content: '\f10d';
     font-size: x-large;
-    padding: 0 0 0 1rem;
+    padding: 0 0 0 0.5rem;
     color: var(--accent-blue);
 }
 
 blockquote p {
     position: relative;
     font-style: italic;
-    padding: 0 0 0 4rem;
+    padding: 0 0 0 2.5rem;
 }
 
 /* table */

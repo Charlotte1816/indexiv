@@ -120,6 +120,11 @@ const jaUrl = new URL(jaPath, Astro.site).toString();
                     tags: 'ams',
                     // ラベルIDを使用
                     useLabelIds: true,
+                    // マクロ
+                    macros: {
+                        // ベクトル
+                        bm: ['{\\boldsymbol{#1}}', 1],
+                    },
                 },
                 // CommonHTML出力の設定
                 chtml: {
@@ -129,7 +134,7 @@ const jaUrl = new URL(jaPath, Astro.site).toString();
             };
         </script>
         <!-- MaJax読み込み -->
-        <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
         <!-- title -->
         <title>IndeXiv | {title}</title>
