@@ -179,3 +179,60 @@ h1::before, h2::before {
     font-size: small;
     padding: 0 0.5rem;
 }
+
+/* blockquote */
+
+blockquote{
+    position:relative;
+    margin: 0;
+    border-left: 3px solid var(--accent-blue);
+}
+
+blockquote:before{
+    position: absolute;
+    font-family: 'FontAwesome';
+    content: '\f10d';
+    font-size: x-large;
+    padding: 0 0 0 1rem;
+    color: var(--accent-blue);
+}
+
+blockquote p {
+    position: relative;
+    font-style: italic;
+    padding: 0 4rem;
+}
+
+blockquote:after{
+    position:absolute;
+    font-family:'FontAwesome';
+    content:'\f10e';
+    font-size: x-large;
+    color: var(--accent-blue);
+    right: 1rem;
+    bottom: 0rem;
+}
+
+/* table */
+
+table {
+    border-collapse: collapse;
+    margin: 0 auto;
+    table-layout: fixed;
+    border-bottom: 1px solid var(--accent-blue);
+    border-top: 1px solid var(--accent-blue);
+}
+
+table th,
+table td {
+    padding: 0.5em;
+}
+
+table thead tr{
+    border-bottom: 3px double var(--accent-blue);
+}
+
+table tr:hover {
+	cursor: default;
+	background-color: var(--mygray);
+}
