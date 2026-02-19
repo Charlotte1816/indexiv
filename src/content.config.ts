@@ -6,6 +6,7 @@ const ja = defineCollection({
     schema: z.object({
         category: z.string(),
         title: z.string(),
+        description: z.string(),
     }),
 });
 
@@ -14,6 +15,7 @@ const en = defineCollection({
     schema: z.object({
         category: z.string(),
         title: z.string(),
+        description: z.string(),
     }),
 });
 

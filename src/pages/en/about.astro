@@ -5,10 +5,14 @@ import BaseLayout from "../../components/BaseLayout.astro"
 const lang = "en";
 const type = "website";
 const title = "About";
-const description = "About this site.";
+const description = "Indexiv is a website personally run by a graduate student. It summarizes what I have learned about theoretical physics and related mathematics.";
 ---
 <!-- レイアウト呼び出し -->
 <BaseLayout lang={lang} type={type} title={title} description={description}>
     <h1>{title}</h1>
+    <!-- 注意書き -->
+	<div class="remark">
+		<p>This English version is written using AI translation from the Japanese version.</p>
+	</div>
     <p>{description}</p>
 </BaseLayout>

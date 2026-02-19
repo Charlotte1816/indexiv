@@ -26,14 +26,13 @@ const filtered = entries.filter(
 
 // カテゴリ名と英語表記の対応表
 const catnames: Record<string, string> = {
-	"quantum-field-theory": "Quantum Field Theory",
-	"string-theory": "String Theory",
+    "peskin": "[Peskin] Quantum Field Theory Complete Guide",
 }
 
 // props
 const lang = "en";
 const type = "website";
-const description = "A glossary of terms in " + catnames[category];
+const description = catnames[category] ;
 ---
 <!-- レイアウト呼び出し -->
 <BaseLayout lang={lang} type={type} title={catnames[category]} description={description}>

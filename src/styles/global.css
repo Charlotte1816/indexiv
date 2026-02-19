@@ -29,6 +29,9 @@
     --black: rgb(0, 0, 0);
     /* お気に入り */
     --mygray: #eeeeee;
+    --mygreen: #f2ffe5;
+    --mypink: #ffeaff;
+    --myorange: #fff2e5;
     --metropolis: #23373B;
 }
 
@@ -60,7 +63,7 @@ body {
 
 p {
     margin-block: 1rem;
-    padding: 0.5rem;
+    padding: 0 0.5rem;
 }
 
 a {
@@ -231,17 +234,16 @@ blockquote p {
 table {
     border-collapse: collapse;
     margin: 0 auto;
-    border-bottom: 1px solid var(--accent-blue);
-    border-top: 1px solid var(--accent-blue);
 }
 
 table th,
 table td {
     padding: 0.5em;
+    border: 1px solid var(--metropolis);
 }
 
 table thead tr{
-    border-bottom: 3px double var(--accent-blue);
+    border-bottom: 1px solid var(--metropolis);
 }
 
 table tr:hover {
@@ -266,4 +268,80 @@ table tr:hover {
     overflow-x: auto;
     overflow-y: hidden;
     padding: 0 0.5rem;
+}
+
+/* example */
+
+.example {
+    margin: 1rem 0; /* 外側余白 */
+    padding: 1rem; /* 内側余白 */
+    position: relative; /* 配置基準 */
+}
+
+.example::before {
+    content: "Example"; /* 擬似要素 */
+    padding: 0 0.5rem; /* タイトルの余白 */
+    font-size: medium; /* タイトルのサイズ */
+    font-weight: bold; /* タイトルの太さ */
+    color: var(--accent-green); /* タイトルの色 */
+    height: 100%; /* ボックス高 */
+    width: 1rem; /* カッコ幅 */
+    position: absolute; /* 位置指定 */
+    bottom: 0; /* 下端揃え */
+    border-bottom: 3px solid var(--accent-green); /* 下線 */
+}
+
+.example::before {
+    left: 0; /* 左配置 */
+    border-left: 3px solid var(--accent-green); /* 左カッコ */
+}
+
+/* recall */
+
+.recall {
+    margin: 1rem 0; /* 外側余白 */
+    padding: 1rem; /* 内側余白 */
+    position: relative; /* 配置基準 */
+}
+
+.recall::before {
+    content: "Recall"; /* 擬似要素 */
+    padding: 0 0.5rem; /* タイトルの余白 */
+    font-size: medium; /* タイトルのサイズ */
+    font-weight: bold; /* タイトルの太さ */
+    color: var(--accent-brown); /* タイトルの色 */
+    height: 100%; /* ボックス高 */
+    width: 1rem; /* カッコ幅 */
+    position: absolute; /* 位置指定 */
+    bottom: 0; /* 下端揃え */
+    border-bottom: 3px solid var(--accent-brown); /* 下線 */
+}
+
+.recall::before {
+    left: 0; /* 左配置 */
+    border-left: 3px solid var(--accent-brown); /* 左カッコ */
+}
+
+/* remark */
+
+.remark {
+    display: flex; /* フレックスボックスにする */
+    align-items: center;
+    margin: 1rem 0; /* 外側余白 */
+    padding: 1.0rem;
+    background-color: var(--myorange); /* ボックスの背景色 */
+    border-radius: 5px;
+    border: 1px solid var(--base-beige);
+}
+
+.remark::before {
+    font-family: "FontAwesome";
+    content: "\f071";
+    color: #bd7b68; /* アイコン・タイトルの色 */
+    font-size: large; /* アイコンのサイズ */
+    margin-right: 0.5rem;
+}
+
+.remark p {
+    margin: 0; /* 段落の余白をリセット */
 }

@@ -10,21 +10,27 @@ const categories = [...new Set(entries.map(e => e.data.category))];
 
 // カテゴリ名と英語表記の対応表
 const catnames: Record<string, string> = {
-	"quantum-field-theory": "Quantum Field Theory",
-	"string-theory": "String Theory",
+	"peskin": "[Peskin] Quantum Field Theory Complete Guide",
 }
 
 // props
 const lang = "en";
 const type = "website";
 const title = "Home";
-const description = "We collect and share information about theoretical physics.";
+const description = "This site compiles notes on theoretical physics.";
 ---
 <!-- レイアウト呼び出し -->
 <BaseLayout lang={lang} type={type} title={title} description={description}>
+	<!-- タイトル -->
 	<h1>{title}</h1>
+	<!-- 注意書き -->
+	<div class="remark">
+		<p>This English version is written using AI translation from the Japanese version.</p>
+	</div>
+	<!-- 説明 -->
 	<p>{description}</p>
-	<h2>Categories</h2>
+	<!-- カテゴリー -->
+	<h2>Notes</h2>
 	<ul>
 		{categories.map(cat => (
 			<li>

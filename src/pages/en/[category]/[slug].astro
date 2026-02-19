@@ -30,7 +30,7 @@ const { Content, headings } = await render(entry);
 const lang = "en";
 const type = "article";
 const title = entry.data.title;
-const description = "Explanation of " + title;
+const description = entry.data.description;
 ---
 <!-- レイアウト呼び出し -->
 <BaseLayout lang={lang} type={type} title={title} description={description}>
@@ -52,6 +52,12 @@ const description = "Explanation of " + title;
                         ))}
                 </ul>
             </div>
+            <!-- 注意書き -->
+            <div class="remark">
+                <p>This English version is written using AI translation from the Japanese version.</p>
+            </div>
+            <!-- 記事の説明 -->
+            <p>Description: {description}</p>
             <!-- 本文 -->
             <Content />
         </div>

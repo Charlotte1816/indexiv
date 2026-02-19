@@ -30,7 +30,7 @@ const { Content, headings } = await render(entry);
 const lang = "ja";
 const type = "article";
 const title = entry.data.title;
-const description = title + "についての解説";
+const description = entry.data.description;
 ---
 <!-- レイアウト呼び出し -->
 <BaseLayout lang={lang} type={type} title={title} description={description}>
@@ -52,6 +52,8 @@ const description = title + "についての解説";
                         ))}
                 </ul>
             </div>
+            <!-- 記事の説明 -->
+            <p>概要：{description}</p>
             <!-- 本文 -->
             <Content />
         </div>
