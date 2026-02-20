@@ -32,6 +32,7 @@
     --mygreen: #f2ffe5;
     --mypink: #ffeaff;
     --myorange: #fff2e5;
+    --myblue: #e5f2ff;
     --metropolis: #23373B;
 }
 
@@ -129,7 +130,6 @@ h3 {
     position: sticky;
     top: 1rem;
     padding-right: 0.5rem;
-    font-size: 0.9rem;
     align-self: start;
 }
 
@@ -141,8 +141,9 @@ h3 {
 }
 
 .toc-subitem {
-    padding: .1rem;
-    font-size: 0.8rem;
+    padding: .2rem;
+    font-size: 0.7rem;
+    border-bottom: 1px solid var(--lightgray);
 }
 
 .toc-title {
@@ -207,26 +208,26 @@ h3 {
 
 /* blockquote */
 
-blockquote{
-    position:relative;
-    margin: 0.5rem;
-    border-left: 3px solid var(--accent-blue);
-    font-size: small;
+blockquote {
+    display: flex; /* フレックスボックスにする */
+    align-items: center;
+    margin: 1rem 0; /* 外側余白 */
+    padding: 1.0rem;
+    background-color: var(--myblue); /* ボックスの背景色 */
+    border-radius: 5px;
+    border: 1px solid var(--base-sky);
 }
 
-blockquote:before{
-    position: absolute;
-    font-family: 'FontAwesome';
-    content: '\f10d';
-    font-size: x-large;
-    padding: 0 0 0 0.5rem;
-    color: var(--accent-blue);
+blockquote::before {
+    font-family: "FontAwesome";
+    content: "\f10d";
+    color: var(--accent-blue); /* アイコン・タイトルの色 */
+    font-size: large; /* アイコンのサイズ */
+    margin-right: 0.5rem;
 }
 
 blockquote p {
-    position: relative;
-    font-style: italic;
-    padding: 0 0 0 2.5rem;
+    margin: 0; /* 段落の余白をリセット */
 }
 
 /* table */
@@ -337,11 +338,35 @@ table tr:hover {
 .remark::before {
     font-family: "FontAwesome";
     content: "\f071";
-    color: #bd7b68; /* アイコン・タイトルの色 */
+    color: var(--accent-orange); /* アイコン・タイトルの色 */
     font-size: large; /* アイコンのサイズ */
     margin-right: 0.5rem;
 }
 
 .remark p {
+    margin: 0; /* 段落の余白をリセット */
+}
+
+/* memo */
+
+.memo {
+    display: flex; /* フレックスボックスにする */
+    align-items: center;
+    margin: 1rem 0; /* 外側余白 */
+    padding: 1.0rem;
+    background-color: var(--myblue); /* ボックスの背景色 */
+    border-radius: 5px;
+    border: 1px solid var(--base-sky);
+}
+
+.memo::before {
+    font-family: "FontAwesome";
+    content: "\f4ad";
+    color: var(--accent-blue); /* アイコン・タイトルの色 */
+    font-size: large; /* アイコンのサイズ */
+    margin-right: 0.5rem;
+}
+
+.memo p {
     margin: 0; /* 段落の余白をリセット */
 }
