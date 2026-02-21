@@ -34,45 +34,33 @@ const description = entry.data.description;
 ---
 <!-- レイアウト呼び出し -->
 <BaseLayout lang={lang} type={type} title={title} description={description}>
+    <!-- タイトル -->
     <h1>{title}</h1>
-    <!-- コンテンツ構造 -->
-    <div class="content">
-        <!-- 左サイド -->
-        <div class="main">
-            <!-- 目次ボックス -->
-            <div class="toc-box">
-                <div class="toc-box-title">Table of Contents</div>
-                <ul class="toc-box-list">
-                    {headings
-                        .filter(h => h.depth <= 2)
-                        .map(h => (
-                            <li class="toc-box-item">
-                                <a href={`#${h.slug}`}>{h.text}</a>
-                            </li>
-                        ))}
-                </ul>
-            </div>
-            <!-- 注意書き -->
-            <div class="remark">
-                <p>This English version is written using AI translation from the Japanese version.</p>
-            </div>
-            <!-- 記事の説明 -->
-            <p>Description: {description}</p>
-            <!-- 本文 -->
-            <Content />
+    <!-- 目次ボックス -->
+    <div class="toc-box">
+        <!-- 目次タイトル -->
+        <div>
+            Contents
+            <!-- 開く/閉じる -->
+            <label><input type="checkbox" checked /></label>
         </div>
-        <!-- 右サイド -->
-        <aside class="toc">
-            <div class="toc-title">ToC</div>
-            <ul class="toc-sublist">
-                {headings
-                    .filter(h => h.depth <= 2)
-                    .map(h => (
-                        <li class="toc-subitem">
-                            <a href={`#${h.slug}`}>{h.text}</a>
-                        </li>
-                    ))}
-            </ul>
-        </aside>
+        <!-- headingsを使って深さ2の目次生成 -->
+        <ul>
+            {headings
+                .filter(h => h.depth <= 2)
+                .map(h => (
+                    <li>
+                        <a href={`#${h.slug}`}>{h.text}</a>
+                    </li>
+                ))}
+        </ul>
     </div>
+    <!-- 注意書き -->
+    <div class="remark">
+        <p>This English version is written using AI translation from the Japanese version.</p>
+    </div>
+    <!-- 記事の説明 -->
+    <p>Description: {description}</p>
+    <!-- 本文 -->
+    <Content />
 </BaseLayout>

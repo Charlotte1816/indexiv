@@ -12,6 +12,7 @@ const breadcrumbs = segments.map((segment,index) => {
 });
 ---
 <nav aria-label="Breadcrumb">
+    <!-- パンくずリスト要素を取得 -->
     <ol class="breadcrumb-list">
         {breadcrumbs.map((crumb, index) => (
             <li class="breadcrumb-item">
@@ -27,6 +28,7 @@ const breadcrumbs = segments.map((segment,index) => {
     </ol>
 </nav>
 
+<!-- スタイル編集 -->
 <style>
     .breadcrumb-list {
         display: flex;
@@ -34,7 +36,7 @@ const breadcrumbs = segments.map((segment,index) => {
         list-style: none;
         padding: 0.3rem 0.5rem;
         background-color: var(--metropolis);
-        font-size: small;
+        font-size: 0.8rem;
     }
 
     .breadcrumb-separator {

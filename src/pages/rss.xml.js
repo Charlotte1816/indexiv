@@ -12,7 +12,7 @@ export async function GET(context) {
         // RSSフィードのタイトル
         title: 'IndeXiv',
         // RSSフィードの説明
-        description: 'Index for theoretical physics.',
+        description: 'Notes on theoretical physics.',
         // サイトのURLを指定
         site: context.site,
         // 記事データを RSS 用のフォーマットに変換
@@ -24,9 +24,9 @@ export async function GET(context) {
                 // 記事のタイトル
                 title: post.data.title,
                 // schemaの日付を使用，なければ現在日時を使用
-                pubDate: post.data.pubDate || new Date(),
+                pubDate: new Date(),
                 // 記事の説明
-                description: `Explanation of ${post.data.title}`,
+                description: `${post.data.title}`,
                 // URLを生成
                 link: `/en/${category}/${slug}/`,
             };

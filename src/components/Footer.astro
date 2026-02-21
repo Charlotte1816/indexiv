@@ -10,14 +10,12 @@ const { currentLocale } = Astro.props;
 
     <!-- nav -->
     <nav class="footer-nav">
-        <a href={`/${currentLocale}/`}>Home</a>
-        <span class="footer-separator">|</span>
-        <a href={`/${currentLocale}/about`}>About</a>
-        <span class="footer-separator">|</span>
-        <a href={`/${currentLocale}/misc`}>Misc</a>
+        <!-- TOPに戻る -->
+        <a href="#top" class="back-to-top">[BACK TO TOP]</a>
     </nav>
 </footer>
 
+<!-- スタイル編集 -->
 <style>
     footer {
         display: grid;
@@ -29,7 +27,7 @@ const { currentLocale } = Astro.props;
 
     .copyright {
         grid-column: 1;
-        font-size: small;
+        font-size: 0.8rem;
     }
 
     .footer-separator {
@@ -38,6 +36,6 @@ const { currentLocale } = Astro.props;
 
     .footer-nav {
         grid-column: 3;
-        font-size: small;
+        font-size: 0.8rem;
     }
 </style>

@@ -25,7 +25,6 @@ export default defineConfig({
             // 参考文献
             [rehypeCitation, {
                 bibliography: './src/content/bibliography.bib',
-                // csl: './src/content/citation-style.csl',
                 linkCitations: true,
             }],
             // 数式

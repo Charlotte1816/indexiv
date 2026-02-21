@@ -17,7 +17,7 @@ const catnames: Record<string, string> = {
 const lang = "ja";
 const type = "website";
 const title = "Home";
-const description = "理論物理学に関するノートをまとめています。";
+const description = "理論物理学に関するノートをまとめています。教科書の行間埋めの成果をまとめ共有することを目的に運営しています。扱う内容はhep-th分野に関連したものになると思います。管理人は現在，物理学科の大学院生で，勉強と研究の傍らでこのサイトを運営しています。皆様の一助になれば幸いです。";
 ---
 <!-- レイアウト呼び出し -->
 <BaseLayout lang={lang} type={type} title={title} description={description}>
@@ -27,6 +27,7 @@ const description = "理論物理学に関するノートをまとめていま�
 	<p>{description}</p>
 	<!-- カテゴリー -->
 	<h2>Notes</h2>
+	<!-- カテゴリーリスト -->
 	<ul>
 		{categories.map(cat => (
 			<li>

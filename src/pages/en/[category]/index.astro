@@ -26,7 +26,7 @@ const filtered = entries.filter(
 
 // カテゴリ名と英語表記の対応表
 const catnames: Record<string, string> = {
-    "peskin": "[Peskin] Quantum Field Theory Notes",
+    "peskin": "[Peskin] Notes on Quantum Field Theory",
 }
 
 // props
@@ -36,7 +36,9 @@ const description = catnames[category] ;
 ---
 <!-- レイアウト呼び出し -->
 <BaseLayout lang={lang} type={type} title={catnames[category]} description={description}>
+    <!-- カテゴリー名表示 -->
     <h1>{catnames[category]}</h1>
+    <!-- 抽出した記事を表示 -->
     <ul>
         {filtered.map(entry => (
             <li>

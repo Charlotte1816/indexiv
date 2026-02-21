@@ -10,14 +10,14 @@ const categories = [...new Set(entries.map(e => e.data.category))];
 
 // カテゴリ名と英語表記の対応表
 const catnames: Record<string, string> = {
-	"peskin": "[Peskin] Quantum Field Theory Notes",
+	"peskin": "[Peskin] Notes on Quantum Field Theory",
 }
 
 // props
 const lang = "en";
 const type = "website";
 const title = "Home";
-const description = "This site compiles notes on theoretical physics.";
+const description = "I compile notes on theoretical physics. The goal is to share the progress made in filling in the gaps in textbooks. The content I cover is likely related to the hep-th field. I am currently a graduate student in the Department of Physics, and I manage this site while studying and conducting research. I hope it will be helpful to you.";
 ---
 <!-- レイアウト呼び出し -->
 <BaseLayout lang={lang} type={type} title={title} description={description}>
@@ -31,6 +31,7 @@ const description = "This site compiles notes on theoretical physics.";
 	<p>{description}</p>
 	<!-- カテゴリー -->
 	<h2>Notes</h2>
+	<!-- カテゴリーリスト -->
 	<ul>
 		{categories.map(cat => (
 			<li>

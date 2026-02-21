@@ -1,4 +1,7 @@
+/* katex読み込み */
 @import 'katex/dist/katex.min.css';
+
+/* -------------------- */
 
 /* root */
 :root {
@@ -27,7 +30,7 @@
     --lightgray: rgb(200, 200, 203);
     --gray: rgb(127, 135, 143);
     --black: rgb(0, 0, 0);
-    /* お気に入り */
+    /* その他 */
     --mygray: #eeeeee;
     --mygreen: #f2ffe5;
     --mypink: #ffeaff;
@@ -36,17 +39,19 @@
     --metropolis: #23373B;
 }
 
-/* layouts */
+/* -------------------- */
 
+/* layouts */
 html {
-    font-size: 16px;
+    font-size: 1rem;
     scroll-behavior: smooth;
-    content-visibility: auto;
 }
 
 body {
     display: grid;
     grid-template-rows: auto 1fr auto;
+    grid-template-columns: 200px 1fr;
+    gap: 0 1rem;
     min-height: 100vh;
     max-width: 1000px;
     margin: auto;
@@ -56,12 +61,69 @@ body {
     background-color: var(--white);
 }
 
+header {
+    grid-column: 2;
+    grid-row : 1;
+}
+
+main {
+    grid-column: 2;
+    grid-row : 2;
+    min-width: 0;
+    content-visibility: auto;
+}
+
+footer {
+    grid-column: 2;
+    grid-row : 3;
+}
+
+aside {
+    grid-column: 1;
+    grid-row : 1 / span 3;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: sticky;
+    top: 1rem;
+    height: calc(100vh - 2rem);
+    overflow-y: auto;
+    padding: 1rem;
+    background: var(--mygray);
+    font-size: 0.9rem;
+}
+
+.sidebar-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    body {
+        grid-template-columns: 0 1fr;
+        gap: 0;
+    }
+
+    aside {
+        display: none;
+    }
+
+    .sidebar {
+        display: none;
+    }
+}
+
 * {
     box-sizing: border-box;
 }
 
-/* decoration */
+/* -------------------- */
 
+/* decoration */
 p {
     margin-block: 1rem;
     padding: 0 0.5rem;
@@ -70,7 +132,6 @@ p {
 a {
     color: var(--accent-blue);
     text-decoration: none;
-    transition: color 0.2s ease;
 }
 
 a:hover {
@@ -78,22 +139,22 @@ a:hover {
     text-decoration: underline;
 }
 
-/* markdown */
-
 strong {
-    color: var(--accent-orange);
     margin: 0 0.2rem;
+    background: linear-gradient(transparent 60%, var(--base-beige) 60%);
 }
 
-/* headings */
+/* -------------------- */
 
+/* headings */
 h1, h2 {
     display: flex;
     align-items: center;
-    padding: 0.5rem 0rem 0.5rem 0.5rem;
+    padding: 0.5rem 0 0.5rem 0.5rem;
     color: var(--black);
     background-color: var(--mygray);
-    font-size: medium;
+    font-size: 1rem;
+    position: relative;
 }
 
 h1::before, h2::before {
@@ -110,128 +171,85 @@ h3 {
     padding: 0.5rem;
     color: var(--black);
     background-color: var(--mygray);
-    font-size: medium;
+    font-size: 1rem;
 }
 
-/* コンテンツ構造 */
-.content {
-    display: grid;
-    grid-template-columns: 1fr 200px;
-    gap: 1rem;
-}
-
-/* グリッド幅が広がらないようにする */
-.content > * {
-    min-width: 0;
-}
-
-/* 右目次 */
-.toc {
-    position: sticky;
-    top: 1rem;
-    padding-right: 0.5rem;
-    align-self: start;
-}
-
-.toc-sublist {
-    list-style-type: none;
+h4 {
     margin: 0;
     padding: 0;
-    border-top: 3px solid var(--metropolis);
 }
 
-.toc-subitem {
-    padding: .2rem;
-    font-size: 0.75rem;
-    border-bottom: 1px dashed var(--lightgray);
-}
-
-.toc-title {
-    font-size: 0.8rem;
-    font-weight: bold;
-}
-
-@media (max-width: 768px) {
-    .content {
-        grid-template-columns: 1fr;
-    }
-
-    .toc {
-        display: none;
-    }
-}
+/* -------------------- */
 
 /* 目次ボックス */
 .toc-box {
-    list-style-type: disc;
-    list-style-position: inside;
-    border: 2px solid var(--metropolis);
+    margin-bottom: 1rem;
+    padding: 1rem 1rem 1rem 2rem;
+    background-color: var(--mygray);
 }
 
-.toc-box-title {
+.toc-box div {
     display: flex;
-    margin-left: 0;
-    padding: 2px 5px 5px 10px;
-    background-color: var(--metropolis);
-    color: var(--white);
-    font-weight: 600;
-    font-size: medium;
-}
-
-.toc-box-list {
-    list-style-type: disc;
+    font-weight: bold;
+    align-items: center;
     margin: 0;
-    padding: 0.5rem 1.5rem;
-    font-size: 0.9rem;
+    padding: 0.5rem 0;
 }
 
-.toc-box-item {
-    padding: .3rem;
+.toc-box div::before {
+    font-family: FontAwesome;
+    content: "\f0ca";
+    display: inline-block;
+    margin-right: 0.5rem;
+    padding-top: 0.15rem;
 }
 
-.toc-box-item:not(:last-child) {
-    border-bottom: 1px dashed var(--metropolis);
+.toc-box label::after {
+    margin-left: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--gray);
+    content: "[Show]";
+    cursor: pointer;
 }
 
-.toc-box-item::marker {
-    color: var(--metropolis);
-    font-size: 1.0rem;
+.toc-box:has(:checked) label::after {
+    content: "[Hide]";
 }
+
+.toc-box input {
+    display: none;
+}
+
+.toc-box ul {
+    margin: 0;
+    padding: 0 1.1rem;
+    overflow: hidden;
+}
+
+.toc-box > ul {
+    height: 0;
+}
+
+.toc-box:has(:checked) > ul {
+    height: auto;
+}
+
+.toc-box li {
+    padding: 0.3rem 0;
+}
+
+/* -------------------- */
 
 /* lastModified */
-
 .lastModified {
     align-items: center;
-    font-size: small;
+    font-size: 0.9rem;
     padding: 0 0.5rem;
 }
 
-/* blockquote */
-
-blockquote {
-    display: flex; /* フレックスボックスにする */
-    align-items: center;
-    margin: 1rem 0; /* 外側余白 */
-    padding: 1.0rem;
-    background-color: var(--myblue); /* ボックスの背景色 */
-    border-radius: 5px;
-    border: 1px solid var(--accent-blue);
-}
-
-blockquote::before {
-    font-family: "FontAwesome";
-    content: "\f10d";
-    color: var(--accent-blue); /* アイコン・タイトルの色 */
-    font-size: large; /* アイコンのサイズ */
-    margin-right: 0.5rem;
-}
-
-blockquote p {
-    margin: 0; /* 段落の余白をリセット */
-}
+/* -------------------- */
 
 /* table */
-
 table {
     border-collapse: collapse;
     margin: 0 auto;
@@ -248,19 +266,20 @@ table thead tr{
 }
 
 table tr:hover {
-	cursor: default;
 	background-color: var(--mygray);
 }
 
-/* reference */
+/* -------------------- */
 
+/* bibliography*/
 .csl-entry {
     margin: 1rem 0;
     padding: 0 0.5rem;
 }
 
-/* katex */
+/* -------------------- */
 
+/* katex */
 .katex {
     font-size: 1rem;
 }
@@ -271,102 +290,116 @@ table tr:hover {
     padding: 0 0.5rem;
 }
 
+/* -------------------- */
+
 /* example */
-
 .example {
-    margin: 1rem 0; /* 外側余白 */
-    padding: 1rem; /* 内側余白 */
-    position: relative; /* 配置基準 */
+    margin: 1rem 0;
+    padding: 1rem;
+    position: relative;
 }
 
 .example::before {
-    content: "Example"; /* 擬似要素 */
-    padding: 0 0.5rem; /* タイトルの余白 */
-    font-size: medium; /* タイトルのサイズ */
-    font-weight: bold; /* タイトルの太さ */
-    color: var(--accent-green); /* タイトルの色 */
-    height: 100%; /* ボックス高 */
-    width: 1rem; /* カッコ幅 */
-    position: absolute; /* 位置指定 */
-    bottom: 0; /* 下端揃え */
-    border-bottom: 3px solid var(--accent-green); /* 下線 */
-}
-
-.example::before {
-    left: 0; /* 左配置 */
-    border-left: 3px solid var(--accent-green); /* 左カッコ */
+    content: "Example";
+    padding: 0 0.5rem;
+    font-size: medium;
+    font-weight: bold;
+    color: var(--accent-green);
+    height: 100%;
+    width: 1rem;
+    position: absolute;
+    bottom: 0;
+    border-bottom: 3px solid var(--accent-green);
+    border-left: 3px solid var(--accent-green);
+    left: 0;
 }
 
 /* recall */
-
 .recall {
-    margin: 1rem 0; /* 外側余白 */
-    padding: 1rem; /* 内側余白 */
-    position: relative; /* 配置基準 */
+    margin: 1rem 0;
+    padding: 1rem;
+    position: relative;
 }
 
 .recall::before {
-    content: "Recall"; /* 擬似要素 */
-    padding: 0 0.5rem; /* タイトルの余白 */
-    font-size: medium; /* タイトルのサイズ */
-    font-weight: bold; /* タイトルの太さ */
-    color: var(--accent-brown); /* タイトルの色 */
-    height: 100%; /* ボックス高 */
-    width: 1rem; /* カッコ幅 */
-    position: absolute; /* 位置指定 */
-    bottom: 0; /* 下端揃え */
-    border-bottom: 3px solid var(--accent-brown); /* 下線 */
+    content: "Recall";
+    padding: 0 0.5rem;
+    font-size: medium;
+    font-weight: bold;
+    color: var(--accent-brown);
+    height: 100%;
+    width: 1rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-bottom: 3px solid var(--accent-brown);
+    border-left: 3px solid var(--accent-brown);
 }
 
-.recall::before {
-    left: 0; /* 左配置 */
-    border-left: 3px solid var(--accent-brown); /* 左カッコ */
-}
+/* -------------------- */
 
 /* remark */
-
 .remark {
-    display: flex; /* フレックスボックスにする */
+    display: flex;
     align-items: center;
-    margin: 1rem 0; /* 外側余白 */
+    margin: 1rem 0;
     padding: 1.0rem;
-    background-color: var(--myorange); /* ボックスの背景色 */
-    border-radius: 5px;
-    border: 1px solid var(--accent-orange);
+    background-color: var(--myorange);
+    border-left: 3px solid var(--accent-orange);
 }
 
 .remark::before {
     font-family: "FontAwesome";
     content: "\f071";
-    color: var(--accent-orange); /* アイコン・タイトルの色 */
-    font-size: large; /* アイコンのサイズ */
+    color: var(--accent-orange);
+    font-size: large;
     margin-right: 0.5rem;
 }
 
 .remark p {
-    margin: 0; /* 段落の余白をリセット */
+    margin: 0;
 }
 
 /* memo */
-
 .memo {
-    display: flex; /* フレックスボックスにする */
+    display: flex;
     align-items: center;
-    margin: 1rem 0; /* 外側余白 */
+    margin: 1rem 0;
     padding: 1.0rem;
-    background-color: var(--myblue); /* ボックスの背景色 */
-    border-radius: 5px;
-    border: 1px solid var(--accent-blue);
+    background-color: var(--myblue);
+    border-left: 3px solid var(--accent-blue);
 }
 
 .memo::before {
     font-family: "FontAwesome";
     content: "\f4ad";
-    color: var(--accent-blue); /* アイコン・タイトルの色 */
-    font-size: large; /* アイコンのサイズ */
+    color: var(--accent-blue);
+    font-size: large;
     margin-right: 0.5rem;
 }
 
 .memo p {
-    margin: 0; /* 段落の余白をリセット */
+    margin: 0;
+}
+
+/* blockquote */
+blockquote {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+    padding: 1.0rem;
+    background-color: var(--myblue);
+    border-left: 3px solid var(--accent-blue);
+}
+
+blockquote::before {
+    font-family: "FontAwesome";
+    content: "\f10d";
+    color: var(--accent-blue);
+    font-size: large;
+    margin-right: 0.5rem;
+}
+
+blockquote p {
+    margin: 0;
 }
