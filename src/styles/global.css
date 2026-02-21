@@ -116,7 +116,7 @@ h3 {
 /* コンテンツ構造 */
 .content {
     display: grid;
-    grid-template-columns: 1fr 150px;
+    grid-template-columns: 1fr 200px;
     gap: 1rem;
 }
 
@@ -137,13 +137,13 @@ h3 {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    border-top: 3px double var(--metropolis);
+    border-top: 3px solid var(--metropolis);
 }
 
 .toc-subitem {
     padding: .2rem;
-    font-size: 0.7rem;
-    border-bottom: 1px solid var(--lightgray);
+    font-size: 0.75rem;
+    border-bottom: 1px dashed var(--lightgray);
 }
 
 .toc-title {
