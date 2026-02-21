@@ -5,7 +5,7 @@ description: "Peskin 2.1節 The Necessity of the Field Viewpoint の行間埋め
 ---
 参考文献：[@Peskin:1995ev]
 
-## p.13 単一粒子の相対論的波動方程式が失敗する理由
+## p.13 相対論的波動方程式が失敗する理由
 
 >Since this discussion usually takes place near the end of a graduate-level quantum mechanics course, we will not repeat it here.
 

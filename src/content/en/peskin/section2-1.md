@@ -5,7 +5,7 @@ description: "Complete guide for Peskin Section 2.1 The Necessity of the Field V
 ---
 References: [@Peskin:1995ev]
 
-## p.13 Why the Single-Particle Relativistic Wave Equation Fails
+## p.13 Why the Relativistic Wave Equation Fails
 
 >Since this discussion usually takes place near the end of a graduate-level quantum mechanics course, we will not repeat it here.
 

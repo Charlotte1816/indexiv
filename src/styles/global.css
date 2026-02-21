@@ -215,7 +215,7 @@ blockquote {
     padding: 1.0rem;
     background-color: var(--myblue); /* ボックスの背景色 */
     border-radius: 5px;
-    border: 1px solid var(--base-sky);
+    border: 1px solid var(--accent-blue);
 }
 
 blockquote::before {
@@ -332,7 +332,7 @@ table tr:hover {
     padding: 1.0rem;
     background-color: var(--myorange); /* ボックスの背景色 */
     border-radius: 5px;
-    border: 1px solid var(--base-beige);
+    border: 1px solid var(--accent-orange);
 }
 
 .remark::before {
@@ -356,7 +356,7 @@ table tr:hover {
     padding: 1.0rem;
     background-color: var(--myblue); /* ボックスの背景色 */
     border-radius: 5px;
-    border: 1px solid var(--base-sky);
+    border: 1px solid var(--accent-blue);
 }
 
 .memo::before {
