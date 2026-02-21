@@ -1,7 +1,7 @@
 ---
 category: "peskin"
-title: "Section 2.1 Complete Guide"
-description: "Complete guide for Peskin Section 2.1 The Necessity of the Field Viewpoint"
+title: "Section 2.1 Gap Filling"
+description: "Gap filling for Peskin Section 2.1 The Necessity of the Field Viewpoint"
 ---
 References: [@Peskin:1995ev]
 

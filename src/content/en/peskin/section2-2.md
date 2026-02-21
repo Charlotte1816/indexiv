@@ -1,7 +1,7 @@
 ---
 category: "peskin"
-title: "Section 2.2 Complete Guide"
-description: "Complete guide for Peskin Section 2.2 Elements of Classical Field Theory"
+title: "Section 2.2 Gap Filling"
+description: "Gap filling for Peskin Section 2.2 Elements of Classical Field Theory"
 ---
 References: [@Peskin:1995ev]
 
