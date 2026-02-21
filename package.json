@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.15",
+    "@astrojs/sitemap": "^3.7.0",
     "astro": "^5.17.1",
     "child_process": "^1.0.2",
     "path": "^0.12.7",

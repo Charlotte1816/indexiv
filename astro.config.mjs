@@ -5,6 +5,8 @@ import rehypeCitation from 'rehype-citation';
 // 数式
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+// サイトマップ
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
@@ -41,4 +43,9 @@ export default defineConfig({
             remarkMath,
         ]
     },
+    // インテグレーション
+    integrations: [
+        // サイトマップ
+        sitemap(),
+    ]
 });
