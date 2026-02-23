@@ -7,8 +7,6 @@ References: [@Peskin:1995ev]
 
 ## p.15 Functional Form of the Lagrangian
 
->In a local field theory the Lagrangian can be written as the spatial integral of a Lagrangian density, denoted by $\mathcal{L}$, which is a function of one or more fields $\phi(x)$ and their derivatives $\partial_\mu \phi(x)$.
-
 The following is based on [@Tong:2007qft] and [@Kugo:1989aa].
 
 We restrict the action of a theory with field $\phi(x)$ to the form
@@ -197,8 +195,6 @@ $$
 
 ## p.18 Charge Conservation
 
->The conservation law can also be expressed by saying that the charge is a constant in time.
-
 The Noether charge is defined as:
 $$
     Q = \int_V j^0 \ d^3x
@@ -297,8 +293,6 @@ In passive transformations, the field argument is not reversed. Active and passi
 
 ## p.19 Hamiltonian as a Charge
 
->By computing this quantity for the Klein-Gordon field, one can recover the result (2.8).
-
 Consider the real Klein-Gordon theory:
 $$
     \mathcal{L} = \frac{1}{2}\dot{\phi}^2 - \frac{1}{2}(\nabla \phi)^2 - \frac{1}{2} m^2 \phi^2
@@ -328,4 +322,3 @@ $$
 holds in general. For the Belinfante-Rosenfeld tensor, the equality as densities does not hold, but the equality as charges does.
 
 ## References
-

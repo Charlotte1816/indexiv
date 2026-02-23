@@ -73,6 +73,10 @@ main {
     content-visibility: auto;
 }
 
+.article {
+    font-family: "Noto Serif JP", "Noto Serif", serif;
+}
+
 footer {
     grid-column: 2;
     grid-row : 3;
@@ -100,6 +104,10 @@ aside {
     list-style: none;
     margin: 0;
     padding: 0.5rem;
+}
+
+.backtotop {
+    font-size: 0.8rem;
 }
 
 @media (max-width: 768px) {
@@ -140,6 +148,7 @@ a:hover {
 }
 
 strong {
+    font-family: "Noto Sans JP", "Noto Sans", sans-serif;
     margin: 0 0.2rem;
     background: linear-gradient(transparent 60%, var(--base-beige) 60%);
 }
@@ -147,6 +156,10 @@ strong {
 /* -------------------- */
 
 /* headings */
+h1, h2, h3, h4 {
+    font-family: "Noto Sans JP", "Noto Sans", sans-serif;
+}
+
 h1, h2 {
     display: flex;
     align-items: center;

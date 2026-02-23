@@ -7,8 +7,6 @@ References: [@Peskin:1995ev]
 
 ## p.13 Why the Relativistic Wave Equation Fails
 
->Since this discussion usually takes place near the end of a graduate-level quantum mechanics course, we will not repeat it here.
-
 I will provide only a brief explanation here. The following is based on Section 1.1 of [@Srednicki:2007qs].
 
 Premise: We want to combine quantum mechanics and (special) relativity.
@@ -65,8 +63,6 @@ The former leads to **Quantum Field Theory** (QFT), and extending the latter to 
 
 ## p.13 Regarding Multiparticle States Appearing as Intermediate States
 
->Even when there is not enough energy for pair creation, multiparticle states appear, for example, as intermediate states in second-order perturbation theory. We can think of such states as existing only for a very short time, according to the uncertainty principle $\Delta E \cdot \Delta t \geq \hbar$. As we go to higher orders in perturbation theory, arbitrarily many such “virtual” particles can be created.
-
 I will provide only a brief explanation. Section 1.1 of [@Coleman:2018mew] is also helpful. Knowledge of quantum mechanics is assumed. If you are unsure, referring to Section 7.1.3 of [@griffiths_introduction_2018], for example, might be good.
 
 For instance, if we add a perturbation $\delta V$ to the Hamiltonian $H$, the ground state energy $E_0$ in second-order perturbation theory becomes:
@@ -76,8 +72,6 @@ $$
 Looking at the second term, we can see that intermediate states of **all** energies contribute.
 
 ## p.13 Physical Meaning of Transition Amplitude
-
->Consider the amplitude for a free particle to propagate from $\bm{x}_0$ to $\bm{x}$.
 
 Let's review quantum mechanics. We won't go into detailed derivations. Section 6.8 of [@griffiths_introduction_2018] is also helpful. I will explicitly write $\hbar$ for a little while.
 
@@ -298,8 +292,6 @@ $$
 $$
 
 ## p.15 High Precision of Agreement Between Experiment and Theory
-
->The experimental confirmation of these predictions, often to an unprecedented level of accuracy, is our real reason for studying quantum field theory.
 
 I will mention just one experiment that symbolizes this fact. It is the measurement of the electron anomalous magnetic moment $a_e$. The experimental value is given as:
 $$

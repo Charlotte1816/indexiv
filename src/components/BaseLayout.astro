@@ -124,7 +124,10 @@ const jaUrl = new URL(jaPath, Astro.site).toString();
             <div class="lastModified">
                 <i class="fa-solid fa-clock-rotate-left"></i> {new Date()}
             </div>
-            <slot />
+            <!-- 記事を挿入 -->
+            <div class="article">
+                <slot />
+            </div>
         </main>
 
         <!-- サイドバー -->

@@ -7,8 +7,6 @@ description: "Peskin 2.2節 Elements of Classical Field Theory の行間埋め"
 
 ## p.15 ラグランジアンの関数形
 
->In a local field theory the Lagrangian can be written as the spatial integral of a Lagrangian density, denoted by $\mathcal{L}$, which is a function of one or more fields $\phi(x)$ and their derivatives $\partial_\mu \phi(x)$.
-
 以下は[@Tong:2007qft]および[@Kugo:1989aa]を参考にした。
 
 場 $\phi(x)$ の理論の作用を
@@ -197,8 +195,6 @@ $$
 
 ## p.18 チャージの保存則
 
->The conservation law can also be expressed by saying that the charge is a constant in time.
-
 Noetherチャージは次のように定義される：
 $$
     Q = \int_V j^0 \ d^3x
@@ -300,8 +296,6 @@ $$
 このように受動変換では場の引数が逆にならない。能動変換と受動変換は似ているが異なるものである。
 
 ## p.19 チャージとしてのハミルトニアン
-
->By computing this quantity for the Klein-Gordon field, one can recover the result (2.8).
 
 実Klein-Gordon理論を考える：
 $$

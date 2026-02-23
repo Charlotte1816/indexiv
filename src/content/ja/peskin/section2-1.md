@@ -7,8 +7,6 @@ description: "Peskin 2.1節 The Necessity of the Field Viewpoint の行間埋め
 
 ## p.13 相対論的波動方程式が失敗する理由
 
->Since this discussion usually takes place near the end of a graduate-level quantum mechanics course, we will not repeat it here.
-
 簡単な説明だけを与えておくことにする。以下は[@Srednicki:2007qs]を1.1節を参考にした。
 
 前提：量子力学と（特殊）相対論を組み合わせたい。
@@ -65,8 +63,6 @@ $$
 
 ## p.13 中間状態に現れる多粒子状態について
 
->Even when there is not enough energy for pair creation, multiparticle states appear, for example, as intermediate states in second-order perturbation theory. We can think of such states as existing only for a very short time, according to the uncertainty principle $\Delta E \cdot \Delta t \geq \hbar$. As we go to higher orders in perturbation theory, arbitrarily many such “virtual” particles can be created.
-
 簡単な説明だけを与えておくことにする。[@Coleman:2018mew]の1.1節も参考になる。量子力学の知識を仮定する。もし不安なら例えば[@griffiths_introduction_2018]の7.1.3節を参照するとよい。
 
 たとえば，ハミルトニアン $H$ に摂動 $\delta V$ を加えると，基底エネルギー $E_0$ は二次の摂動論で次のようになる：
@@ -76,8 +72,6 @@ $$
 第二項を見ると，**全て**のエネルギーの中間状態が寄与していることが分かる。
 
 ## p.13 遷移振幅の物理的意味
-
->Consider the amplitude for a free particle to propagate from $\bm{x}_0$ to $\bm{x}$.
 
 量子力学の復習をしよう。詳しい導出はしない。[@griffiths_introduction_2018]の6.8節も参考になる。少しの間 $\hbar$ を明示的に書いておくことにする。
 
@@ -297,8 +291,6 @@ $$
 $$
 
 ## p.15 高精度な実験と理論の一致
-
->The experimental confirmation of these predictions, often to an unprecedented level of accuracy, is our real reason for studying quantum field theory.
 
 この事実を象徴する実験を1つだけ挙げておくことにする。電子の異常磁気モーメント $a_e$ の測定である。実験値は次のように与えられている：
 $$
