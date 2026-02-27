@@ -1,9 +1,7 @@
-/* katex読み込み */
 @import 'katex/dist/katex.min.css';
 
 /* -------------------- */
 
-/* root */
 :root {
     /* 色を置き換えをしない */
     color-scheme: only;
@@ -41,7 +39,6 @@
 
 /* -------------------- */
 
-/* layouts */
 html {
     font-size: 1rem;
     scroll-behavior: smooth;
@@ -131,7 +128,6 @@ aside {
 
 /* -------------------- */
 
-/* decoration */
 p {
     margin-block: 1rem;
     padding: 0 0.5rem;
@@ -155,7 +151,6 @@ strong {
 
 /* -------------------- */
 
-/* headings */
 h1, h2, h3, h4 {
     font-family: "Noto Sans JP", "Noto Sans", sans-serif;
 }
@@ -194,7 +189,6 @@ h4 {
 
 /* -------------------- */
 
-/* 目次ボックス */
 .toc-box {
     margin-bottom: 1rem;
     padding: 1rem 1rem 1rem 2rem;
@@ -253,7 +247,6 @@ h4 {
 
 /* -------------------- */
 
-/* lastModified */
 .lastModified {
     align-items: center;
     font-size: 0.9rem;
@@ -262,7 +255,6 @@ h4 {
 
 /* -------------------- */
 
-/* table */
 table {
     border-collapse: collapse;
     margin: 0 auto;
@@ -284,7 +276,6 @@ table tr:hover {
 
 /* -------------------- */
 
-/* bibliography*/
 .csl-entry {
     margin: 1rem 0;
     padding: 0 0.5rem;
@@ -292,7 +283,6 @@ table tr:hover {
 
 /* -------------------- */
 
-/* katex */
 .katex {
     font-size: 1rem;
 }
@@ -305,7 +295,6 @@ table tr:hover {
 
 /* -------------------- */
 
-/* example */
 .example {
     margin: 1rem 0;
     padding: 1rem;
@@ -327,7 +316,6 @@ table tr:hover {
     left: 0;
 }
 
-/* recall */
 .recall {
     margin: 1rem 0;
     padding: 1rem;
@@ -351,7 +339,6 @@ table tr:hover {
 
 /* -------------------- */
 
-/* remark */
 .remark {
     display: flex;
     align-items: center;
@@ -373,7 +360,6 @@ table tr:hover {
     margin: 0;
 }
 
-/* memo */
 .memo {
     display: flex;
     align-items: center;
@@ -395,7 +381,6 @@ table tr:hover {
     margin: 0;
 }
 
-/* blockquote */
 blockquote {
     display: flex;
     align-items: center;

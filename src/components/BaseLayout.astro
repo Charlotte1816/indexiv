@@ -1,138 +1,73 @@
 ---
-// components
-// Header
 import Header from './Header.astro';
-// Footer
 import Footer from './Footer.astro';
-// Breadcrumbs
 import Breadcrumbs from './Breadcrumbs.astro';
-
-// styles
 import '../styles/global.css';
-
-// props
 const { lang, type, title, description } = Astro.props;
-// 現在の言語を取得
 const currentLocale = Astro.currentLocale;
-// 相対URL
 const pathname = Astro.url.pathname;
-
-// 絶対URL生成 → String化
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
-
-// URLセグメント分割（例：/en/terms/term → ["", "en", "terms", "term"])
 const segments = pathname.split('/');
-
-// URLセグメント（en用）
 const enSegments = [...segments];
-// 第一セグメントをenにする
 enSegments[1] = "en";
-// セグメント結合
 const enPath = enSegments.join('/');
-
-// URLセグメント（ja用）
 const jaSegments = [...segments];
-// 第一セグメントをjaにする
 jaSegments[1] = "ja";
-// セグメント結合
 const jaPath = jaSegments.join('/');
-
-// 多言語URL生成 → String化
 const enUrl = new URL(enPath, Astro.site).toString();
 const jaUrl = new URL(jaPath, Astro.site).toString();
 ---
-<!-- HTML文書 -->
 <html lang={lang}>
-    <!-- 情報 -->
     <head>
-        <!-- 文字化け防止 -->
         <meta charset="UTF-8" />
-        <!-- モバイル最適化 -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!-- 生成子 -->
         <meta name="generator" content={Astro.generator} />
-        <!-- 要約 -->
         <meta name="description" content={description} />
 
-        <!-- open graph -->
-        <!-- タイトル -->
         <meta property="og:title" content={`IndeXiv | ${title}`}>
-        <!-- 説明 -->
         <meta property="og:description" content={description}>
-        <!-- タイプ -->
         <meta property="og:type" content={type}>
-        <!-- URL -->
         <meta property="og:url" content={canonical}>
-        <!-- 画像（あとで追加） -->
         <meta property="og:image" content="https://indexiv.com/android-chrome-512x512.png">
 
-        <!-- x -->
-        <!-- 種類 -->
         <meta name="twitter:card" content="summary">
-        <!-- タイトル -->
         <meta name="twitter:title" content={`IndeXiv | ${title}`}>
-        <!-- 説明 -->
         <meta name="twitter:description" content={description}>
-        <!-- 画像（あとで追加） -->
         <meta name="twitter:image" content="https://indexiv.com/android-chrome-512x512.png">
 
-        <!-- 正規化 -->
         <link rel="canonical" href={canonical} />
 
-        <!-- 言語 -->
-        <!-- 英語 -->
         <link rel="alternate" href={enUrl} hreflang="en">
-        <!-- 日本語 -->
         <link rel="alternate" href={jaUrl} hreflang="ja">
-        <!-- デフォルト -->
         <link rel="alternate" href={enUrl} hreflang="x-default">
 
-        <!-- favicon（あとで追加） -->
-        <!-- Retina用 -->
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-        <!-- ブックマーク用 -->
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <!-- ブラウザタブ用 -->
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-        <!-- PWA用 -->
         <link rel="manifest" href="/site.webmanifest">
 
-        <!-- tool -->
-        <!-- 記号用 -->
         <link href="https://use.fontawesome.com/releases/v7.2.0/css/all.css" rel="stylesheet">
-        <!-- fonts.googleapisに事前接続 -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
-        <!-- fonts.gstatic.comに事前接続 -->
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <!-- Noto Sans (JP)の特定サイズ読み込み -->
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&family=Noto+Sans+JP:wght@400;600&display=swap" rel="stylesheet">
-        <!-- Noto Serif (JP)の特定サイズ読み込み -->
         <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600&family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
 
-        <!-- title -->
         <title>IndeXiv | {title}</title>
     </head>
-    <!-- 本文 -->
     <body id="top">
-        <!-- ヘッダー -->
         <Header currentLocale={currentLocale} enPath={enPath} jaPath={jaPath} />
 
-        <!-- メインコンテンツ -->
         <main>
-            <!-- パンくずリスト -->
             <Breadcrumbs segments={segments} />
             <div class="lastModified">
                 <i class="fa-solid fa-clock-rotate-left"></i> {new Date()}
             </div>
-            <!-- 記事を挿入 -->
             <div class="article">
                 <slot />
             </div>
         </main>
 
-        <!-- サイドバー -->
         <aside class="sidebar">
-            <!-- メニュー -->
             <div class="menu">
                 <h4>Menu</h4>
                 <ul class="sidebar-nav">
@@ -146,14 +81,11 @@ const jaUrl = new URL(jaPath, Astro.site).toString();
                     <li><a href={`/${currentLocale}/peskin`}>Peskin</a></li>
                 </ul>
             </div>
-            <!-- TOPに戻る -->
             <div class="backtotop">
                 [<a href="#top" class="back-to-top">BACK TO TOP</a>]
             </div>
         </aside>
         
-
-        <!-- フッター -->
         <Footer currentLocale={currentLocale} />
     </body>
 </html>

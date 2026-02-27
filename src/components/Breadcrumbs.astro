@@ -1,23 +1,17 @@
 ---
-// 絶対URLを取得
 const url = Astro.url;
-// URLセグメント分割
 const segments = url.pathname.split('/').filter(Boolean);
-// URLセグメントからパンくず要素を生成
 const breadcrumbs = segments.map((segment,index) => {
     const href = '/' + segments.slice(0, index + 1).join('/');
-    // セグメントをそのままラベルに使用（必要に応じて変換も可能）
     const label = segment;
     return { href, label };
 });
 ---
 <nav aria-label="Breadcrumb">
-    <!-- パンくずリスト要素を取得 -->
     <ol class="breadcrumb-list">
         {breadcrumbs.map((crumb, index) => (
             <li class="breadcrumb-item">
                 {index === breadcrumbs.length - 1 ? (
-                    // 現在のページはリンクしない
                     <span aria-current="page">{crumb.label}</span>
                 ) : (
                     <a href={crumb.href}>{crumb.label}</a>
@@ -28,7 +22,6 @@ const breadcrumbs = segments.map((segment,index) => {
     </ol>
 </nav>
 
-<!-- スタイル編集 -->
 <style>
     .breadcrumb-list {
         display: flex;

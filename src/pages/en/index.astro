@@ -1,41 +1,26 @@
 ---
-// レイアウト読み込み
-import BaseLayout from "../../components/BaseLayout.astro"
-// 記事データを取得
+import BaseLayout from "../../components/BaseLayout.astro";
 import { getCollection } from "astro:content";
-// enコレクションの全記事を取得
 const entries = await getCollection("en");
-// カテゴリの重複を排除してリスト化
 const categories = [...new Set(entries.map(e => e.data.category))];
-
-// カテゴリ名と英語表記の対応表
 const catnames: Record<string, string> = {
 	"peskin": "Reading Peskin-Schroeder",
 }
-
-// props
 const lang = "en";
 const type = "website";
 const title = "Home";
 const description = "I compile notes on theoretical physics. The goal is to share the progress made in filling in the gaps in textbooks. The content I cover is likely related to the hep-th field. I am currently a graduate student in the Department of Physics, and I manage this site while studying and conducting research. I hope it will be helpful to you.";
 ---
-<!-- レイアウト呼び出し -->
 <BaseLayout lang={lang} type={type} title={title} description={description}>
-	<!-- タイトル -->
 	<h1>{title}</h1>
-	<!-- 注意書き -->
 	<div class="remark">
 		<p>This English version is written using AI translation from the Japanese version.</p>
 	</div>
-	<!-- 説明 -->
 	<p>{description}</p>
-	<!-- カテゴリー -->
 	<h2>Notes</h2>
-	<!-- カテゴリーリスト -->
 	<ul>
 		{categories.map(cat => (
 			<li>
-				{/* リンクを英語表記 */}
 				<a href={`/${lang}/${cat}/`}>{catnames[cat]}</a>
 			</li>
 		))}

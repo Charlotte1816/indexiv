@@ -1,17 +1,12 @@
 ---
-// レイアウト読み込み
-import BaseLayout from "../../components/BaseLayout.astro"
-// props
+import BaseLayout from "../../components/BaseLayout.astro";
 const lang = "ja";
 const type = "website";
 const title = "About";
 const description = "このサイトに関する様々な情報を掲載しています。";
 ---
-<!-- レイアウト呼び出し -->
 <BaseLayout lang={lang} type={type} title={title} description={description}>
-    <!-- タイトル -->
     <h1>{title}</h1>
-    <!-- 説明 -->
     <p>目的：</p>
         <ul>
             <li>ノートを整理するため</li>

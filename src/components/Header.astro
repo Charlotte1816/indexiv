@@ -1,7 +1,5 @@
 ---
-// BaseLayoutからURLセグメントを受け取る
 const { currentLocale, enPath, jaPath } = Astro.props;
-// 言語切替のURLを決定
 let switchPath;
 if (currentLocale === 'en') {
     switchPath = jaPath;
@@ -10,12 +8,10 @@ if (currentLocale === 'en') {
 }
 ---
 <header>
-    <!-- site-name -->
     <div class="site-name">
         Inde<i class="fa-solid fa-x"></i>iv
     </div>
 
-    <!-- nav -->
     <nav class="header-nav">
         <a href={`/${currentLocale}/`}>Home</a>
         <span class="header-separator">|</span>
@@ -24,16 +20,12 @@ if (currentLocale === 'en') {
         <a href={`/${currentLocale}/misc`}>Misc</a>
     </nav>
 
-    <!-- button -->
     <div class="button">
-        <!-- 言語切り替え -->
         <a href={switchPath} class="lang-switch" aria-label="Language Switch"><i class="fa-solid fa-language"></i></a>
-        <!-- RSSフィード -->
         <a href="/rss.xml" class="rss" aria-label="RSS Feed"><i class="fa-solid fa-rss"></i></a>
     </div>
 </header>
 
-<!-- スタイル編集 -->
 <style>
     header {
         display: grid;

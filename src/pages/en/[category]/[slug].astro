@@ -1,50 +1,30 @@
 ---
-// レイアウト読み込み
 import BaseLayout from "../../../components/BaseLayout.astro";
-// 記事データの取得とMarkdownレンダリング関数の読み込み
 import { getCollection, render } from "astro:content";
-
-// 静的パス生成
 export async function getStaticPaths() {
-    // enコレクションの全記事を取得
     const entries = await getCollection("en");
-    // 各記事のslugを分割してカテゴリーとスラッグを抽出し静的パスを生成
     return entries.map((entry) => {
-        // slugをcategoryとslugに分割
         const [category, slug] = entry.slug.split("/");
-        // 静的パスと記事データを返す
         return {
             params: { category, slug },
             props: { entry },
         };
     });
-    
 };
-
-// URLパラメータから記事データを取得
 const { entry } = Astro.props;
-// MarkdownコンテンツをHTMLに変換して目次データも取得
 const { Content, headings } = await render(entry);
-
-// props
 const lang = "en";
 const type = "article";
 const title = entry.data.title;
 const description = entry.data.description;
 ---
-<!-- レイアウト呼び出し -->
 <BaseLayout lang={lang} type={type} title={title} description={description}>
-    <!-- タイトル -->
     <h1>{title}</h1>
-    <!-- 目次ボックス -->
     <div class="toc-box">
-        <!-- 目次タイトル -->
         <div>
             Contents
-            <!-- 開く/閉じる -->
             <label><input type="checkbox" checked /></label>
         </div>
-        <!-- headingsを使って深さ2の目次生成 -->
         <ul>
             {headings
                 .filter(h => h.depth <= 2)
@@ -55,12 +35,9 @@ const description = entry.data.description;
                 ))}
         </ul>
     </div>
-    <!-- 注意書き -->
     <div class="remark">
         <p>This English version is written using AI translation from the Japanese version.</p>
     </div>
-    <!-- 記事の説明 -->
     <p>Description: {description}</p>
-    <!-- 本文 -->
     <Content />
 </BaseLayout>

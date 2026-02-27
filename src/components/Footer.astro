@@ -1,21 +1,16 @@
 ---
-// 現在のロケールをBaseLayoutから取得
 const { currentLocale } = Astro.props;
 ---
 <footer>
-    <!-- copyright -->
     <div class="copyright">
         <i class="fa-regular fa-copyright"></i> {new Date().getFullYear()} IndeXiv.</p>
     </div>
 
-    <!-- nav -->
     <nav class="footer-nav">
-        <!-- TOPに戻る -->
         <a href="#top" class="back-to-top">[BACK TO TOP]</a>
     </nav>
 </footer>
 
-<!-- スタイル編集 -->
 <style>
     footer {
         display: grid;

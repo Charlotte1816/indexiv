@@ -1,37 +1,23 @@
 ---
-// レイアウト読み込み
-import BaseLayout from "../../components/BaseLayout.astro"
-// 記事データを取得
+import BaseLayout from "../../components/BaseLayout.astro";
 import { getCollection } from "astro:content";
-// jaコレクションの全記事を取得
 const entries = await getCollection("ja");
-// カテゴリの重複を排除してリスト化
 const categories = [...new Set(entries.map(e => e.data.category))];
-
-// カテゴリ名と日本語表記の対応表
 const catnames: Record<string, string> = {
 	"peskin": "Peskin-Schroederを読む",
 }
-
-// props
 const lang = "ja";
 const type = "website";
 const title = "Home";
 const description = "理論物理学に関するノートをまとめています。教科書の行間埋めの成果をまとめ共有することを目的に運営しています。扱う内容はhep-th分野に関連したものになると思います。管理人は現在，物理学科の大学院生で，勉強と研究の傍らでこのサイトを運営しています。皆様の一助になれば幸いです。";
 ---
-<!-- レイアウト呼び出し -->
 <BaseLayout lang={lang} type={type} title={title} description={description}>
-	<!-- タイトル -->
 	<h1>{title}</h1>
-	<!-- 説明 -->
 	<p>{description}</p>
-	<!-- カテゴリー -->
 	<h2>Notes</h2>
-	<!-- カテゴリーリスト -->
 	<ul>
 		{categories.map(cat => (
 			<li>
-				{/* リンクを日本語表記 */}
 				<a href={`/${lang}/${cat}/`}>{catnames[cat]}</a>
 			</li>
 		))}

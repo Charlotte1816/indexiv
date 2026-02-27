@@ -1,44 +1,27 @@
 ---
-// レイアウト読み込み
 import BaseLayout from "../../../components/BaseLayout.astro";
-// 記事データを取得
 import { getCollection } from "astro:content";
-// 静的パス生成
 export async function getStaticPaths() {
-    // enコレクションの全記事を取得
     const entries = await getCollection("en");
-    // カテゴリー値の重複を排除してリスト化（例：[algebra, analysis, ...]）
     const categories = [...new Set(entries.map(e => e.data.category))];
-    // 各カテゴリー値に対して静的パスを生成
     return categories.map(cat => ({
         params: { category: cat }
     }));
 }
-
-// URLパラメータからカテゴリー値を取得
 const { category } = Astro.params;
-// enコレクションの全記事を再び取得
 const entries = await getCollection("en");
-// 現在のカテゴリー値と一致する記事のみを抽出
 const filtered = entries.filter(
     e => e.data.category === category
 );
-
-// カテゴリ名と英語表記の対応表
 const catnames: Record<string, string> = {
     "peskin": "Reading Peskin-Schroeder",
 }
-
-// props
 const lang = "en";
 const type = "website";
 const description = catnames[category] ;
 ---
-<!-- レイアウト呼び出し -->
 <BaseLayout lang={lang} type={type} title={catnames[category]} description={description}>
-    <!-- カテゴリー名表示 -->
     <h1>{catnames[category]}</h1>
-    <!-- 抽出した記事を表示 -->
     <ul>
         {filtered.map(entry => (
             <li>
