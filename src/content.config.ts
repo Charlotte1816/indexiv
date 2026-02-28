@@ -7,6 +7,7 @@ const ja = defineCollection({
         category: z.string(),
         title: z.string(),
         description: z.string(),
+        order: z.number(),
     }),
 });
 
@@ -16,6 +17,7 @@ const en = defineCollection({
         category: z.string(),
         title: z.string(),
         description: z.string(),
+        order: z.number(),
     }),
 });
 

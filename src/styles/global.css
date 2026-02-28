@@ -71,7 +71,7 @@ main {
 }
 
 .article {
-    font-family: "Noto Serif JP", "Noto Serif", serif;
+    font-family: "Noto Sans JP", "Noto Sans", sans-serif;
 }
 
 footer {
@@ -304,7 +304,7 @@ table tr:hover {
 .example::before {
     content: "Example";
     padding: 0 0.5rem;
-    font-size: medium;
+    font-size: 1rem;
     font-weight: bold;
     color: var(--accent-green);
     height: 100%;
@@ -325,7 +325,7 @@ table tr:hover {
 .recall::before {
     content: "Recall";
     padding: 0 0.5rem;
-    font-size: medium;
+    font-size: 1rem;
     font-weight: bold;
     color: var(--accent-brown);
     height: 100%;
@@ -400,4 +400,58 @@ blockquote::before {
 
 blockquote p {
     margin: 0;
+}
+
+.page-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+}
+
+.page-nav a {
+    flex: 1;
+    text-decoration: none;
+    color: inherit;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    padding: 0.75rem 1rem;
+    border-radius: 5px;
+}
+
+.page-nav .prev {
+    text-align: left;
+}
+
+.page-nav .next {
+    text-align: right;
+}
+
+.page-nav a::before {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--gray);
+    margin-bottom: 0.25rem;
+}
+
+.page-nav .prev::before {
+    content: "Previous";
+}
+
+.page-nav .next::before {
+    content: "Next";
+}
+
+.page-nav a:hover {
+    background-color: var(--mygray);
+}
+
+@media (max-width: 768px) {
+    .page-nav {
+        flex-direction: column;
+    }
+
+    .page-nav .prev,
+    .page-nav .next {
+        text-align: left;
+    }
 }
