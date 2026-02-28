@@ -1,15 +1,18 @@
 ---
-import BaseLayout from "../components/BaseLayout.astro"
+import BaseLayout from "../components/BaseLayout.astro";
 import { getCollection } from "astro:content";
+
 const entries = await getCollection("en");
-const categories = [...new Set(entries.map(e => e.data.category))];
-const catnames: Record<string, string> = {
-	"peskin": "[Peskin] Notes on Quantum Field Theory",
-}
+const categories = [
+    ...new Set(
+        entries.map(e => e.slug.split('/')[0])
+    )
+];
+
 const lang = "en";
 const type = "website";
 const title = "Home";
-const description = "I compile notes on theoretical physics.";
+const description = "A collection of formulas related to theoretical physics.";
 ---
 <BaseLayout lang={lang} type={type} title={title} description={description}>
 	<h1>{title}</h1>
@@ -17,10 +20,12 @@ const description = "I compile notes on theoretical physics.";
 		<p>This English version is written using AI translation from the Japanese version.</p>
 	</div>
 	<ul>
-		{categories.map(cat => (
-			<li>
-				<a href={`/${lang}/${cat}/`}>{catnames[cat]}</a>
-			</li>
-		))}
-	</ul>
+        {categories.map(category => (
+            <li>
+            <a href={`/en/${category}/`}>
+                {category}
+            </a>
+            </li>
+        ))}
+    </ul>
 </BaseLayout>

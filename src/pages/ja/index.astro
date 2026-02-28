@@ -1,5 +1,14 @@
 ---
 import BaseLayout from "../../components/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import { LABELS } from "./labels";
+
+const entries = await getCollection("ja");
+const categories = [
+    ...new Set(
+        entries.map(e => e.slug.split('/')[0])
+    )
+];
 
 const lang = "ja";
 const type = "website";
@@ -8,4 +17,13 @@ const description = "理論物理学に関する公式集";
 ---
 <BaseLayout lang={lang} type={type} title={title} description={description}>
     <h1>{title}</h1>
+    <ul>
+        {categories.map(category => (
+            <li>
+            <a href={`/ja/${category}/`}>
+                {LABELS[category]}
+            </a>
+            </li>
+        ))}
+    </ul>
 </BaseLayout>

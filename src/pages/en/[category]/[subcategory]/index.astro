@@ -1,0 +1,44 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../../components/BaseLayout.astro';
+
+export async function getStaticPaths() {
+    const entries = await getCollection('en');
+
+    const pairs = new Set(
+        entries.map(e => {
+        const [category, subcategory] = e.slug.split('/');
+        return `${category}/${subcategory}`;
+        })
+    );
+
+    return [...pairs].map(pair => {
+        const [category, subcategory] = pair.split('/');
+        return {
+        params: { category, subcategory }
+        };
+    });
+}
+
+const { category, subcategory } = Astro.params;
+
+const entries = await getCollection('en', ({ slug }) =>
+    slug.startsWith(`${category}/${subcategory}/`)
+);
+
+const sorted = entries.sort(
+    (a, b) => (a.data.order ?? 0) - (b.data.order ?? 0)
+);
+---
+<BaseLayout lang="en" type="website" title={`${subcategory.charAt(0).toUpperCase() + subcategory.slice(1)} - ${category.charAt(0).toUpperCase() + category.slice(1)}`} description={`About ${subcategory}`}>
+    <h1>{subcategory.charAt(0).toUpperCase() + subcategory.slice(1)}</h1>
+    <ul>
+        {sorted.map(entry => (
+            <li>
+            <a href={`/en/${entry.slug}/`}>
+                {entry.data.title}
+            </a>
+            </li>
+        ))}
+    </ul>
+</BaseLayout>

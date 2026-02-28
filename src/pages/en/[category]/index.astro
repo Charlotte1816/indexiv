@@ -1,0 +1,42 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../components/BaseLayout.astro';
+
+export async function getStaticPaths() {
+    const entries = await getCollection('en');
+
+    const categories = [
+        ...new Set(
+        entries.map(e => e.slug.split('/')[0])
+        )
+    ];
+
+    return categories.map(category => ({
+        params: { category }
+    }));
+}
+
+const { category } = Astro.params;
+
+const entries = await getCollection('en', ({ slug }) =>
+    slug.startsWith(`${category}/`)
+);
+
+const subcategories = [
+    ...new Set(
+        entries.map(e => e.slug.split('/')[1])
+    )
+];
+---
+<BaseLayout lang="en" type="website" title={category.charAt(0).toUpperCase() + category.slice(1)} description={`${category}`}>
+    <h1>{category.charAt(0).toUpperCase() + category.slice(1)}</h1>
+    <ul>
+        {subcategories.map(sub => (
+            <li>
+            <a href={`/en/${category}/${sub}/`}>
+                {sub.charAt(0).toUpperCase() + sub.slice(1)}
+            </a>
+            </li>
+        ))}
+    </ul>
+</BaseLayout>

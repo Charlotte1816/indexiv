@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../../components/BaseLayout.astro';
+import { LABELS } from '../../labels';
+
+export async function getStaticPaths() {
+    const entries = await getCollection('ja');
+
+    const pairs = new Set(
+        entries.map(e => {
+        const [category, subcategory] = e.slug.split('/');
+        return `${category}/${subcategory}`;
+        })
+    );
+
+    return [...pairs].map(pair => {
+        const [category, subcategory] = pair.split('/');
+        return {
+        params: { category, subcategory }
+        };
+    });
+}
+
+const { category, subcategory } = Astro.params;
+
+const entries = await getCollection('ja', ({ slug }) =>
+    slug.startsWith(`${category}/${subcategory}/`)
+);
+
+const sorted = entries.sort(
+    (a, b) => (a.data.order ?? 0) - (b.data.order ?? 0)
+);
+---
+<BaseLayout lang="ja" type="website" title={`${LABELS[subcategory]} - ${LABELS[category]}`} description={`${LABELS[subcategory]}に関するページ`}>
+    <h1>{LABELS[subcategory]}</h1>
+    <ul>
+        {sorted.map(entry => (
+            <li>
+            <a href={`/ja/${entry.slug}/`}>
+                {entry.data.title}
+            </a>
+            </li>
+        ))}
+    </ul>
+</BaseLayout>

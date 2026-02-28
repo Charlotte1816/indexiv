@@ -1,5 +1,6 @@
 ---
-category: "constants"
+category: "analysis"
+subcategory: "constants"
 title: "Natural numbers"
 description: "About natural numbers"
 order: 11

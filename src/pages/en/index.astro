@@ -1,5 +1,13 @@
 ---
 import BaseLayout from "../../components/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const entries = await getCollection("en");
+const categories = [
+    ...new Set(
+        entries.map(e => e.slug.split('/')[0])
+    )
+];
 
 const lang = "en";
 const type = "website";
@@ -11,4 +19,13 @@ const description = "A collection of formulas related to theoretical physics.";
 	<div class="remark">
 		<p>This English version is written using AI translation from the Japanese version.</p>
 	</div>
+	<ul>
+        {categories.map(category => (
+            <li>
+            <a href={`/en/${category}/`}>
+                {category.charAt(0).toUpperCase() + category.slice(1)}
+            </a>
+            </li>
+        ))}
+    </ul>
 </BaseLayout>

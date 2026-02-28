@@ -1,5 +1,6 @@
 ---
-category: "constants"
+category: "analysis"
+subcategory: "constants"
 title: "自然数"
 description: "自然数について"
 order: 11
