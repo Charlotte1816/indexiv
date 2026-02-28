@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../../components/BaseLayout.astro';
+import { LABELS } from '../../en/labels';
 
 export async function getStaticPaths() {
     const entries = await getCollection('en');
@@ -28,13 +29,13 @@ const subcategories = [
     )
 ];
 ---
-<BaseLayout lang="en" type="website" title={category.charAt(0).toUpperCase() + category.slice(1)} description={`${category}`}>
-    <h1>{category.charAt(0).toUpperCase() + category.slice(1)}</h1>
+<BaseLayout lang="en" type="website" title={LABELS[category]} description={`${category}`}>
+    <h1>{LABELS[category]}</h1>
     <ul>
         {subcategories.map(sub => (
             <li>
             <a href={`/en/${category}/${sub}/`}>
-                {sub.charAt(0).toUpperCase() + sub.slice(1)}
+                {LABELS[sub]}
             </a>
             </li>
         ))}

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../components/BaseLayout.astro";
 import { getCollection } from "astro:content";
+import { LABELS } from "../en/labels";
 
 const entries = await getCollection("en");
 const categories = [
@@ -12,18 +13,16 @@ const categories = [
 const lang = "en";
 const type = "website";
 const title = "Home";
-const description = "A collection of formulas related to theoretical physics.";
+const description = "A collection of formulas for physics";
 ---
 <BaseLayout lang={lang} type={type} title={title} description={description}>
 	<h1>{title}</h1>
-	<div class="remark">
-		<p>This English version is written using AI translation from the Japanese version.</p>
-	</div>
+    <p>{description}</p>
 	<ul>
         {categories.map(category => (
             <li>
             <a href={`/en/${category}/`}>
-                {category.charAt(0).toUpperCase() + category.slice(1)}
+                {LABELS[category]}
             </a>
             </li>
         ))}
