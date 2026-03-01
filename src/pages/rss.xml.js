@@ -6,7 +6,7 @@ export async function GET(context) {
 
     return rss({
         title: 'IndeXiv',
-        description: 'Formulas and tables for physicists',
+        description: 'Personal notes on theoretical physics',
         site: context.site,
         items: enDocs.map((post) => {
             const [category, slug] = post.slug.split('/');
