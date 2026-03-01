@@ -21,8 +21,32 @@ if (!entry) {
 }
 
 const { Content } = await entry.render();
+
+const posts = (await getCollection("ja"))
+    .sort((a, b) => a.data.order - b.data.order);
+
+const index = posts.findIndex(p => p.slug === entry.slug);
+
+if (index === -1) {
+    throw new Error(`Post not found: ${entry.slug}`);
+}
+
+const prevPost = index > 0 ? posts[index - 1] : null;
+const nextPost = index < posts.length - 1 ? posts[index + 1] : null;
 ---
 <BaseLayout lang="ja" type="article" title={entry.data.title} description={entry.data.description}>
     <h1>{entry.data.title}</h1>
     <Content />
+    <div class="page-nav">
+        {prevPost && (
+            <a class="prev" href={`/${Astro.currentLocale}/${prevPost.slug}`}>
+                <i class="fa-solid fa-caret-left"></i> {prevPost.data.title}
+            </a>
+        )}
+        {nextPost && (
+            <a class="next" href={`/${Astro.currentLocale}/${nextPost.slug}`}>
+                {nextPost.data.title} <i class="fa-solid fa-caret-right"></i>
+            </a>
+        )}
+    </div>
 </BaseLayout>

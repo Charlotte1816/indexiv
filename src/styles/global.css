@@ -337,6 +337,48 @@ table tr:hover {
     border-left: 3px solid var(--accent-brown);
 }
 
+.definition {
+    margin: 1rem 0;
+    padding: 1rem;
+    position: relative;
+}
+
+.definition::before {
+    content: "Definition";
+    padding: 0 0.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--accent-red);
+    height: 100%;
+    width: 1rem;
+    position: absolute;
+    bottom: 0;
+    border-bottom: 3px solid var(--accent-red);
+    border-left: 3px solid var(--accent-red);
+    left: 0;
+}
+
+.theorem {
+    margin: 1rem 0;
+    padding: 1rem;
+    position: relative;
+}
+
+.theorem::before {
+    content: "Theorem";
+    padding: 0 0.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--accent-blue);
+    height: 100%;
+    width: 1rem;
+    position: absolute;
+    bottom: 0;
+    border-bottom: 3px solid var(--accent-blue);
+    border-left: 3px solid var(--accent-blue);
+    left: 0;
+}
+
 /* -------------------- */
 
 .remark {

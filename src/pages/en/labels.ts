@@ -1,18 +1,21 @@
 export const LABELS: Record<string, string> = {
-    algebra: 'Algebra',
+    'algebra': 'Algebra',
+    'elementary-algebra': 'Elementary Algebra',
+    'linear-algebra': 'Linear Algebra',
 
-    analysis: 'Analysis',
+    'analysis': 'Analysis',
 
-    continuousmath: 'Continuous Mathematics',
+    'continuousmath': 'Continuous Mathematics',
 
-    discretemath: 'Discrete Mathematics',
+    'discretemath': 'Discrete Mathematics',
 
-    geometry: 'Geometry',
+    'geometry': 'Geometry',
 
-    misc: 'Miscellaneous',
-    constants: 'Constants',
+    'misc': 'Miscellaneous',
+    'constants': 'Constants',
+    'series': 'Series',
 
-    specialfunctions: 'Special Functions',
+    'specialfunctions': 'Special Functions',
 
-    statistics: 'Statistics',
+    'statistics': 'Statistics',
 };
